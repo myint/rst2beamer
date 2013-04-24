@@ -1044,7 +1044,9 @@ class BeamerTranslator (LaTeXTranslator):
         attrs = node.attributes
         if not 'align' in attrs and self.centerfigs:
             attrs['align'] = 'center'
-        if ('height' not in attrs) and ('width' not in attrs):
+        if (('height' not in attrs) and
+            ('width' not in attrs) and
+            ('scale' not in attrs)):
             attrs['height'] = '0.75\\textheight'
         LaTeXTranslator.visit_image(self, node)
 
