@@ -387,7 +387,7 @@ def has_sub_sections(node):
 
 
 def string_to_bool(stringin, default=True):
-    """Turn a commandline arguement string into a boolean value."""
+    """Turn a commandline argument string into a boolean value."""
     if isinstance(stringin, bool):
         return stringin
     temp = stringin.lower()
@@ -1285,7 +1285,7 @@ class BeamerTranslator (LaTeXTranslator):
 
     def visit_container(self, node):
         """Handle containers with 'special' names, ignore the rest."""
-        # NOTE: theres something wierd here where ReST seems to translate
+        # NOTE: theres something weird here where ReST seems to translate
         # underscores in container identifiers into hyphens. So for the
         # moment we'll allow both.
         if (node_has_class(node, 'r2b-simplecolumns')):

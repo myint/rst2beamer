@@ -218,7 +218,7 @@ titles are converted as normal, Beamer ignores them. There is some problem in
 the production of literals. rst2latex converts them to ragged-right, noindent
 typewriter font in a quote. Under beamer however, this makes them appear as
 italics. This was solved by overriding literal production with a simpler
-enviroment, albeit one that occasionally produces buggy output. Options to
+environment, albeit one that occasionally produces buggy output. Options to
 hyperref are dropped, due to this already being used in beamer.
 
 
@@ -423,7 +423,7 @@ sourcecode to be included with the literal environment::
 
 rst2beamer improves on this with ``code-block`` directive. In the simplest use,
 ``code-block`` (or it's synonym, ``sourcecode``) duplicates the literal
-enviroment::
+environment::
 
    .. code-block::
 
