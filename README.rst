@@ -1,3 +1,12 @@
+==========
+rst2beamer
+==========
+
+.. image:: https://travis-ci.org/myint/rst2beamer.png?branch=master
+   :target: https://travis-ci.org/myint/rst2beamer
+   :alt: Build status
+
+
 Introduction
 ============
 
