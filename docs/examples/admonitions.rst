@@ -25,5 +25,3 @@ Slide 3
 .. hint::
 
    This is a hint
-
-

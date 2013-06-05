@@ -8,16 +8,16 @@ Usage
 The LaTeX source for the corresponding Beamer example without notes can be produced::
 
 	rst2beamer notes.rst notes.tex
-	
+
 Notes will be included (on the right) via::
-	
+
 	rst2beamer --shownotes true notes.rst notes_shownotes_true.tex
 
-A presentation with only the notes can be produced:: 
+A presentation with only the notes can be produced::
 
 		rst2beamer --shownotes only notes.rst notes_shownotes_only.tex
 
-	
+
 
 Showing notes
 -------------
@@ -30,15 +30,15 @@ where ``option`` can be:
 
 	false
 		don't show any notes (the default)
-		
+
 	true
 		show notes as per ``right``
-			
+
 	only
 		show only the notes, not the presentation
-		
+
 	left, right, top, bottom
-		show the notes in the given position to the presentation 
+		show the notes in the given position to the presentation
 
 
 The note directive
@@ -55,7 +55,7 @@ Multiple notes can be included in one slide.
 .. r2b-note::
 
 	This is an example of that.
-	
+
 Slides without any notes will produce an empty note slide.
 
 .. r2b-note::
@@ -80,7 +80,3 @@ be handled like the notes directive.
 .. container:: r2b-note
 
    Important: I must find out why the container names are being munged.
-
-
-
-

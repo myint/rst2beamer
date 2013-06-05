@@ -92,7 +92,7 @@ From the commandline call::
 
 	% easy_install rst2beamer
 
-Superuser privileges may be required. 
+Superuser privileges may be required.
 
 
 Via setup.py
@@ -104,7 +104,7 @@ Download a source tarball, unpack it and call setup.py to install::
 	% cd rst2beamer
 	% python setup.py install
 
-Superuser privileges may be required. 
+Superuser privileges may be required.
 
 
 Manual
@@ -161,7 +161,7 @@ convert immediately to PDF. This can be done easily with ``pdflatex``. For
 example::
 
 	pdflatex outfile.tex
-	
+
 will produce outfile.pdf. pdflatex is included in most TeX distributions.
 
 
@@ -262,14 +262,14 @@ is set to 0.90 of the page width. The directive accepts an optional argument
 
 		This is a demonstration of the rst2beamer simple
 		column directive.
-	
+
 		Notice that we have used the optional argument,
 		"width". It is set to 0.95.
-	
+
 		* A list or image
 		* can be
 		* a column
-		
+
 will produce a slide with three columns, containing the first, then second
 paragraph, then the list. Their individual width will be 0.95 divided by
 three.
@@ -283,11 +283,11 @@ at worst ignore them rather than throw an error. For example::
 	.. container:: r2b-simplecolumns
 
 		The custom r2b directives won't be recognised by any
-		writer other than rst2beamer. 
+		writer other than rst2beamer.
 
 		So, any container with the name 'r2b-simplecolumns'
 		or 'r2b-simplecolumns' will be handled like the simple
-		columns directive. 
+		columns directive.
 
 
 Finally, we allow columns to be explicitly set and their width controlled with
@@ -298,16 +298,16 @@ the r2b-columnset and r2b-column directives. For example::
 
 		.. r2b-column::
 			:width: 0.60
-		
+
 			If you insist on setting columns explicitly, you can,
 			grouping multiple elements.
-		
+
 			The width of the column set and individual columns can
 			be given. This set and column are 0.95 and 0.60 wide
 			respectively.
-		
+
 		.. r2b-column::
-	
+
 			Columns not given a width (like this one) share the
 			remainder.
 
@@ -343,15 +343,15 @@ where ``option`` can be:
 
 	false
 		don't show any notes (the default)
-		
+
 	true
 		show notes as per ``right``
-			
+
 	only
 		show only the notes, not the presentation
-		
+
 	left, right, top, bottom
-		show the notes in the given position to the presentation 
+		show the notes in the given position to the presentation
 
 Notes can be included in ReST with the ``r2b-note`` directive. For example::
 
@@ -363,17 +363,17 @@ will inject a note into the current slide. Multiple notes can be included in
 one slide and will be compiled into a single note. For example::
 
 	Farnarkling history
-	
+
 	.. r2b-note::
 
 		Don't forget to mention the Sorenson brothers.
-	
+
 	Greats of the sport
-	
+
 	.. r2b-note::
 
 		They would arkle with great authority.
-	
+
 will produce a slide with the content:
 
 	Farnarkling history
@@ -434,7 +434,7 @@ However, if the Pygments syntax coloring library is installed, and the commandli
 The language is specified by a optional argument to ``code-block``::
 
    .. code-block:: python
-   
+
 The language abbreviation is any of the "names" recognised by Pygments, which for the most part are common sense (e.g. *perl*, *cpp*, *java*). If the language is not provided, it is deduced in two ways. First if the commandline argument ``--codeblocks-default-language`` has been used, it sets the language for any unspecified codeblocks. Otherwise, the code is parsed in an attempt to deduce its type.
 
 If tabs are used for indenting in a ReST source document, code can appear overly spread out (8 spaces per tabs). The ``--codeblocks-replace-tabs`` commandline option can be used to set the leading tabs in a codeblock ot a different number of spaces.
@@ -466,7 +466,7 @@ below won't raise any error, but will result in malformed and incorrectly
 formatted output::
 
 	Do not do this::
-	
+
 	.. parsed-literal::
 
 		*for* i in *xrange* (10):
@@ -568,7 +568,3 @@ References
 
 .. [#beamer_themes] Patrick Pletscher `Beamer Themes
 	<http://www.pletscher.org/writings/latex/beamerthemes.php>`__
-
-
-
-

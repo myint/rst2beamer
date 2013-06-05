@@ -126,4 +126,3 @@ References
 .. [#rst] `Restructured text <http://docutils.sourceforge.net/rst.html>`__
 
 .. [#beamer] `Beamer homepage <http://latex-beamer.sourceforge.net/>`__
-

@@ -38,7 +38,7 @@ frame. You get odd errors about something not completing or terminating,
 unless you give a "fragile" qualifier to the frame::
 
    \begin{frame}[fragile]
-   
+
 The commandline arguments that refer to codeblocks are arguably verbose but
 clear.
 
@@ -84,4 +84,3 @@ into hyphens by docutils, so we've gotten in a a scrap allowing all sorts of
 names. From this point on, hyphens shall be the "official" style (``r2b-`` as
 opposed to ``r2b_``), although existing underscores shall maintained silently
 for compatibility.
-

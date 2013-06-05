@@ -8,7 +8,7 @@ Usage
 The LaTeX source for the corresponding Beamer example can be produced::
 
 	rst2beamer codeblocks.rst codeblocks.tex
-	
+
 If Pygments is available, syntax highlighting can be used::
 
 	rst2beamer --codeblocks-use-pygments \
@@ -21,7 +21,7 @@ Simple codeblocks
 The ``code-block`` (or ``sourcecode``) directive can be used to format blocks of source code. Note that the language must passed as an option. Normally this is represented as a literal block, but if Pygments is activated, the syntax will be highlighted:
 
 .. code-block:: python
-	
+
 	def myfunc (arg1, arg2='foo'):
 		global baz
 		bar = unicode (quux)
@@ -65,7 +65,7 @@ By ReST translates leading (indenting) tabs as 8 spaces. The argument
 different values and see how the code below changes:
 
 .. code-block:: python
-	
+
 	class MyClass (object):
 		def __init__ (self):
 			for i in ['foo', 'bar', 'baz']:
