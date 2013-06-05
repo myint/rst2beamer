@@ -452,7 +452,7 @@ def get_lexer(text, lang):
 
 # NODES ###
 # Special nodes for marking up beamer layout
-class columnset (nodes.container):
+class columnset(nodes.container):
 
     """A group of columns to display on one slide.
 
@@ -462,7 +462,7 @@ class columnset (nodes.container):
     # NOTE: a simple container, has no attributes.
 
 
-class column (nodes.container):
+class column(nodes.container):
 
     """A single column, grouping content.
 
@@ -472,7 +472,7 @@ class column (nodes.container):
     # TODO: should really init width in a c'tor
 
 
-class beamer_note (nodes.container):
+class beamer_note(nodes.container):
 
     """Annotations for a beamer presentation.
 
@@ -505,7 +505,7 @@ class block(nodes.container):
 
 # DIRECTIVES
 
-class CodeBlockDirective (Directive):
+class CodeBlockDirective(Directive):
 
     """Directive for a code block with special highlighting or line numbering
     settings.
@@ -539,7 +539,7 @@ for name in ['code-block', 'sourcecode']:
     directives.register_directive(name, CodeBlockDirective)
 
 
-class SimpleColsDirective (Directive):
+class SimpleColsDirective(Directive):
 
     """A directive that wraps all contained nodes in beamer columns.
 
@@ -579,7 +579,7 @@ for name in ['r2b-simplecolumns', 'r2b_simplecolumns']:
     directives.register_directive(name, SimpleColsDirective)
 
 
-class ColumnSetDirective (Directive):
+class ColumnSetDirective(Directive):
 
     """A directive that encloses explicit columns in a 'columns' environment.
 
@@ -645,7 +645,7 @@ for name in ['r2b-columnset', 'r2b_columnset']:
     directives.register_directive(name, ColumnSetDirective)
 
 
-class ColumnDirective (Directive):
+class ColumnDirective(Directive):
 
     """A directive to explicitly create an individual column.
 
@@ -686,7 +686,7 @@ for name in ['r2b-column', 'r2b_column']:
     directives.register_directive(name, ColumnDirective)
 
 
-class NoteDirective (Directive):
+class NoteDirective(Directive):
 
     """A directive to include notes within a beamer presentation."""
     required_arguments = 0
@@ -712,7 +712,7 @@ for name in ['r2b-note', 'r2b_note']:
     directives.register_directive(name, NoteDirective)
 
 
-class beamer_section (Directive):
+class beamer_section(Directive):
 
     required_arguments = 1
     optional_arguments = 0
@@ -741,7 +741,7 @@ for name in ['beamer_section', 'r2b-section', 'r2b_section']:
     directives.register_directive(name, beamer_section)
 
 
-class onlybeamer_directive (Directive):
+class onlybeamer_directive(Directive):
 
     """A directive that encloses its content in \only<beamer>{content} so that
     the content shows up in the presentation and not in the handouts or article
@@ -767,7 +767,7 @@ class onlybeamer_directive (Directive):
         return [only_beamer_set]
 
 
-class block_directive (Directive):
+class block_directive(Directive):
 
     """A directive that encloses its content in.
 
@@ -802,7 +802,7 @@ directives.register_directive('block', block_directive)
 # WRITER
 
 
-class BeamerTranslator (LaTeXTranslator):
+class BeamerTranslator(LaTeXTranslator):
 
     """A converter for docutils elements to beamer-flavoured latex."""
 
@@ -1307,7 +1307,7 @@ class BeamerTranslator (LaTeXTranslator):
             LaTeXTranslator.depart_container(self, node)
 
 
-class BeamerWriter (Latex2eWriter):
+class BeamerWriter(Latex2eWriter):
 
     """A docutils writer that produces Beamer-flavoured LaTeX."""
     settings_spec = BEAMER_SPEC
