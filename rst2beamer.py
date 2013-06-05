@@ -20,20 +20,10 @@ See <http:www.agapow.net/software/rst2beamer> for more details.
 # TODO: fix descriptions
 # TODO: 'r2b' or 'beamer' as identifying prefix?
 
-
-# This file has been modified by Ryan Krauss starting on 2009-03-25.
-# Please contact him if it is broken: ryanwkrauss@gmail.com
-
-__docformat__ = 'restructuredtext en'
-__author__ = ('Ryan Krauss <ryanwkrauss@gmail.com> & '
-              'Paul-Michael Agapow <agapow@bbsrc.ac.uk>')
-__version__ = '0.7.0'
-
-
-# IMPORTS ###
+from __future__ import division
+from __future__ import unicode_literals
 
 import re
-import pdb
 
 from docutils.core import publish_cmdline, default_description
 from docutils.writers.latex2e import Writer as Latex2eWriter
@@ -43,7 +33,12 @@ from docutils.nodes import fully_normalize_name as normalize_name
 from docutils.parsers.rst import directives, Directive
 from docutils.writers.latex2e import PreambleCmds
 
-# CONSTANTS & DEFINES ###
+
+__docformat__ = 'restructuredtext en'
+__author__ = ('Ryan Krauss <ryanwkrauss@gmail.com> & '
+              'Paul-Michael Agapow <agapow@bbsrc.ac.uk>')
+__version__ = '0.7.0'
+
 
 SHOWNOTES_FALSE = 'false'
 SHOWNOTES_TRUE = 'true'
@@ -528,7 +523,7 @@ class CodeBlockDirective(Directive):
             language = self.arguments[0]
         except IndexError:
             language = 'guess'
-        code = u'\n'.join(self.content)
+        code = '\n'.join(self.content)
         literal = nodes.literal_block(code, code)
         literal['classes'].append('code-block')
         literal['language'] = language
@@ -1053,7 +1048,6 @@ class BeamerTranslator(LaTeXTranslator):
     def visit_section(self, node):
         if node.astext() == 'blankslide':
             # this never gets reached, but I don't know if that is bad
-            pdb.set_trace()
             self.out.append('\\begin{frame}[plain]{}\n\\end{frame}')
         else:
             if has_sub_sections(node):
