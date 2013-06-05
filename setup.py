@@ -1,5 +1,4 @@
 from setuptools import setup
-from setuptools import find_packages
 import os
 
 from rst2beamer import __version__
