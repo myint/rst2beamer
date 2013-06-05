@@ -817,7 +817,6 @@ class BeamerTranslator (LaTeXTranslator):
         self.head_prefix = [x for x in self.head_prefix
                             if ('{typearea}' not in x)]
 
-        # self.head_prefix[hyperref_posn[0]] = '\\usepackage{hyperref}\n'
         self.head_prefix.extend([
             '\\definecolor{rrblitbackground}{rgb}{0.55, 0.3, 0.1}\n',
             '\\newenvironment{rtbliteral}{\n',
@@ -829,12 +828,9 @@ class BeamerTranslator (LaTeXTranslator):
         ])
 
         if (self.cb_use_pygments):
-            # from pygments.formatters import LatexFormatter
-            # fmtr = LatexFormatter()
             self.head_prefix.extend([
                 '\\usepackage{fancyvrb}\n',
                 '\\usepackage{color}\n',
-                # LatexFormatter().get_style_defs(),
             ])
 
         # set appropriate header options for theming
@@ -912,7 +908,7 @@ class BeamerTranslator (LaTeXTranslator):
         if self.pdfinfo:
             self.pdfsetup += [r'\hypersetup{'] + self.pdfinfo + ['}']
         # Complete body
-        # a) document title (part 'body_prefix'):
+        # a) document title (part 'body_prefix')
         # NOTE: Docutils puts author/date into docinfo, so normally
         #       we do not want LaTeX author/date handling (via \maketitle).
         #       To deactivate it, we add \title, \author, \date,
@@ -1001,7 +997,6 @@ class BeamerTranslator (LaTeXTranslator):
             self.context.append(' } \\\\\n')
         else:
             self.context.append(' \\\\\n')
-        # LaTeXTranslator.visit_docinfo_item(self, node, name)
 
     def latex_image_length(self, width_str):
         match = re.match('(\d*\.?\d*)\s*(\S*)', width_str)
@@ -1086,7 +1081,6 @@ class BeamerTranslator (LaTeXTranslator):
             # a blankslide has no title, but is otherwise processed as normal,
             # meaning that the title is blank, but the slide can have some
             # content.  It must at least contain a comment.
-            # self.out.append('\\begin{frame}[plain]{}\n\\end{frame}')
             raise nodes.SkipNode
         elif (self.section_level == self.frame_level + 1):  # 1
             self.out.append('\\frametitle{%s}\n\n' %
@@ -1179,11 +1173,6 @@ class BeamerTranslator (LaTeXTranslator):
         else:
             self.out.append('\\end{itemize}\n')
 
-# def latex_image_length(self, width_str):
-# if ('\\textheight' in width_str) or ('\\textwidth' in width_str):
-# return width_str
-# else:
-# return LaTeXTranslator.latex_image_length(self, width_str)
 
     def visit_enumerated_list(self, node):
         # LaTeXTranslator has a very complicated
@@ -1277,7 +1266,6 @@ class BeamerTranslator (LaTeXTranslator):
         return env
 
     def visit_admonition(self, node):
-        # pdb.set_trace()
         self.fallbacks['admonition'] = PreambleCmds.admonition
         if 'error' in node['classes']:
             self.fallbacks['error'] = PreambleCmds.error
