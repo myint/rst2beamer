@@ -1,12 +1,9 @@
 #!/bin/bash -ex
 
-for base in figure_centering_test \
-            hyperlink_color \
-            overlay_test \
-            sectioning_test \
-            simple_slide_test
+for expected in test/*_expected.tex
 do
+    base=$(basename $expected _expected.tex)
     ./rst2beamer.py test/$base.rst .tmp.tex
-    diff test/${base}_expected.tex .tmp.tex
+    diff $expected .tmp.tex
     rm -f .tmp.tex
 done
