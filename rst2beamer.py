@@ -178,7 +178,7 @@ BEAMER_SPEC = (
                     'action': 'store',
                     'type': 'choice',
                     'dest': 'cb_default_lang',
-                    'choices': HILITE_OPTIONS.values(),
+                    'choices': list(HILITE_OPTIONS.values()),
                     'default': 'guess',
                 }
             ),
