@@ -34,11 +34,6 @@ __version__ = '0.7.0'
 import re
 import pdb
 
-try:
-    locale.setlocale(locale.LC_ALL, '')
-except:
-    pass
-
 from docutils.core import publish_cmdline, default_description
 from docutils.writers.latex2e import Writer as Latex2eWriter
 from docutils.writers.latex2e import LaTeXTranslator, DocumentClass
@@ -46,11 +41,6 @@ from docutils import nodes
 from docutils.nodes import fully_normalize_name as normalize_name
 from docutils.parsers.rst import directives, Directive
 from docutils.writers.latex2e import PreambleCmds
-
-try:
-    import py_directive
-except:
-    pass
 
 # CONSTANTS & DEFINES ###
 
@@ -126,12 +116,6 @@ BEAMER_SPEC = (
                 ['--documentoptions'],
                 {'default': '', }
             ),
-# (
-# 'Attach author and date to the document title.',
-# ['--use-latex-docinfo'],
-# {'default': 1, 'action': 'store_true',
-# 'validator': frontend.validate_boolean}
-# ),
             (
                 'Print embedded notes along with the slides. Possible '
     "arguments include 'false' (don't show), 'only' (show "
@@ -219,9 +203,6 @@ docinfo_w_institute = r"""
 \maketitle
 """
 
-# IMPLEMENTATION ###
-
-# UTILS
 
 LEADING_SPACE_RE = re.compile('^ +')
 
@@ -739,7 +720,6 @@ class beamer_section (Directive):
     def run(self):
         title = self.arguments[0]
 
-        section_text = '\\section{%s}' % title
         text_node = nodes.Text(title)
         text_nodes = [text_node]
         title_node = nodes.title(title, '', *text_nodes)
@@ -811,13 +791,7 @@ class block_directive (Directive):
         self.state.nested_parse(self.content, self.content_offset,
                                 body_set)
         # survey widths
-        text_node = nodes.Text(title)
-        text_nodes = [text_node]
-        title_node = nodes.title(title, '', *text_nodes)
-        mynodes = [body_set]
         body_set.title = title
-        # mynodes += title_node
-        # pdb.set_trace()
         return [body_set]
 
 
@@ -842,14 +816,6 @@ class BeamerTranslator (LaTeXTranslator):
 
         self.head_prefix = [x for x in self.head_prefix
                             if ('{typearea}' not in x)]
-        # hyperref_posn = [i for i in range (len (self.head_prefix))
-        #    if ('{hyperref}' in self.head_prefix[i])]
-        hyperref_posn = index(self.head_prefix,
-                              lambda x: '{hyperref}\n' in x)
-        # if (hyperref_posn is None):
-        # self.head_prefix.extend ([
-        # '\\usepackage{hyperref}\n'
-        # ])
 
         # self.head_prefix[hyperref_posn[0]] = '\\usepackage{hyperref}\n'
         self.head_prefix.extend([
@@ -905,7 +871,6 @@ class BeamerTranslator (LaTeXTranslator):
 
         if (self.cb_use_pygments):
             from pygments.formatters import LatexFormatter
-            fmtr = LatexFormatter()
             self.head_prefix.extend([
                 LatexFormatter().get_style_defs(),
             ])
