@@ -1319,20 +1319,6 @@ class BeamerWriter(Latex2eWriter):
         self.translator_class = BeamerTranslator
 
 
-# TEST & DEBUG ###
-# TODO: should really move to a test file or dir
-
-def test_with_file(fpath, args=[]):
-    """Call rst2beamer on the given file with the given args.
-
-    During development, it's handy to be able to easily call the writer from
-    within Python. This is a convenience function that wraps the docutils
-    functions to do so.
-
-    """
-    return publish_cmdline(writer=BeamerWriter(), argv=args + [fpath])
-
-
 def main():
     description = (
         'Generates Beamer-flavoured LaTeX for PDF-based presentations.' +
