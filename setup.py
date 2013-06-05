@@ -9,7 +9,7 @@ setup(
     description='A docutils writer and script for converting restructured '
                 'text to the Beamer presentation format',
     long_description=open('README.rst').read() + '\n' +
-                open(os.path.join('docs', 'HISTORY.txt')).read(),
+                open(os.path.join('docs', 'HISTORY.rst')).read(),
     classifiers=[
                 'Development Status :: 5 - Production/Stable',
                 'License :: OSI Approved :: GNU General Public License (GPL)',
