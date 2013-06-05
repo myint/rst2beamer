@@ -22,8 +22,9 @@ presentations.
 Installation
 ============
 
-rst2beamer can be installed via setuptools / easy_install or manually. Consult
-the enclosed manual for further details.
+::
+
+   $ pip install --user git+https://github.com/myint/rst2beamer
 
 
 Usage
