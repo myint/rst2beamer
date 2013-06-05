@@ -25,7 +25,8 @@ See <http:www.agapow.net/software/rst2beamer> for more details.
 # Please contact him if it is broken: ryanwkrauss@gmail.com
 
 __docformat__ = 'restructuredtext en'
-__author__ = 'Ryan Krauss <ryanwkrauss@gmail.com> & Paul-Michael Agapow <agapow@bbsrc.ac.uk>'
+__author__ = ('Ryan Krauss <ryanwkrauss@gmail.com> & '
+              'Paul-Michael Agapow <agapow@bbsrc.ac.uk>')
 __version__ = '0.7.0'
 
 
@@ -81,7 +82,8 @@ BEAMER_SPEC = (
             (
                 'Overlay bulleted items. Put [<+-| alert@+>] at the end of '
                 '\\begin{itemize} so that Beamer creats an overlay for each '
-                'bulleted item and the presentation reveals one bullet at a time',
+                'bulleted item and the presentation reveals one bullet at a '
+                'time',
                 ['--overlaybullets'],
                 {'default': True, }
             ),
@@ -859,7 +861,8 @@ class BeamerTranslator (LaTeXTranslator):
                 notes_posn = 'bottom'
             else:
                 # TODO: better error handling
-                assert False, "unrecognised option for shownotes '%s'" % shownotes
+                assert False, "unrecognised option for shownotes '{}'".format(
+                    shownotes)
             option_str = 'show notes on second screen=%s' % notes_posn
         if use_pgfpages:
             self.head_prefix.append('\\usepackage{pgfpages}\n')
@@ -1124,8 +1127,9 @@ class BeamerTranslator (LaTeXTranslator):
         # replace tabs if required
         srccode = node.rawsource
         if (self.cb_replace_tabs):
-            srccode = '\n'.join(adjust_indent_spaces(x,
-                                                     new_width=self.cb_replace_tabs) for x in srccode.split('\n'))
+            srccode = '\n'.join(
+                adjust_indent_spaces(x, new_width=self.cb_replace_tabs)
+                for x in srccode.split('\n'))
         # hilight the code
         hilite_code = highlight_code(srccode, lang)
         self.out.append('\n' + hilite_code + '\n')
@@ -1172,7 +1176,6 @@ class BeamerTranslator (LaTeXTranslator):
             self.out.append('\\end{list}\n')
         else:
             self.out.append('\\end{itemize}\n')
-
 
     def visit_enumerated_list(self, node):
         # LaTeXTranslator has a very complicated

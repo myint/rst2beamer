@@ -79,8 +79,8 @@ def test_one_file(actual_tex_name, expected_tex_name,
     expected = txt_mixin.txt_file_with_list(expected_tex_name)
     if cut_header:
         inds1 = actual.findall('\\begin{document}')
-        assert len(
-            inds1) == 1, 'Did not find exactly one instance of \\begin{document}'
+        assert len(inds1) == 1, ('Did not find exactly one instance of '
+                                 '\\begin{document}')
         startind = inds1[0] + 1
         inds2 = actual.findall('\\end{document}')
         assert len(
@@ -123,8 +123,10 @@ class tester(object):
         print(cmd)
         os.system(cmd)
 
-        assert os.path.exists(
-            self.tex_name), '%s does not exist.  rst translation probably failes' % self.tex_name
+        assert os.path.exists(self.tex_name), (self.tex_name + ' does not '
+                                               'exist. RST '
+                                               'translation probably '
+                                               'fails')
         self.result = test_one_file(self.tex_name, self.expected_out_name,
                                     cut_header=self.cut_header)
         return self.result
@@ -140,8 +142,9 @@ if __name__ == '__main__':
         '-t', '--traceback', action='store_true', dest='traceback',
         help='run rst2beamer.py with traceback option.')
 
-    parser.add_option('-r', '--runlatex', action='store_true', dest='runlatex',
-                      help='boolean option to run pdflatex for all the test files.')
+    parser.add_option(
+        '-r', '--runlatex', action='store_true', dest='runlatex',
+        help='boolean option to run pdflatex for all the test files.')
 
     parser.set_defaults(traceback=False)
 
@@ -169,7 +172,7 @@ if __name__ == '__main__':
     for test in all_tests:
         cur_fail = test.run_test()
 
-        if cur_fail == False:
+        if cur_fail is False:
             passed += 1
         else:
             failures += 1

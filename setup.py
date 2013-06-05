@@ -6,7 +6,8 @@ from rst2beamer import __version__
 setup(
     name='rst2beamer',
     version=__version__,
-    description='A docutils writer and script for converting restructured text to the Beamer presentation format',
+    description='A docutils writer and script for converting restructured '
+                'text to the Beamer presentation format',
     long_description=open('README.txt').read() + '\n' +
                 open(os.path.join('docs', 'HISTORY.txt')).read(),
     classifiers=[
