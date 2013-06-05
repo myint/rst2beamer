@@ -1,6 +1,13 @@
 History
 =======
 
+
+v0.8, 2013-06-04
+----------------
+
+* Added Python 3 support.
+
+
 v0.6.6, 2009-11-06
 ------------------
 
@@ -67,13 +74,15 @@ v0.5, 2009-05-07
 v0.3, 2009-03-25
 ----------------
 
-* RK takes over. Sections and subsections are supported. Images default to being centered and having a height of 0.7\textheight.
+* RK takes over. Sections and subsections are supported. Images default to
+  being centered and having a height of 0.7\textheight.
 
 
 v0.2.1, 2008-08-30
 ------------------
 
-* Date approximate. Earlier versions of rst2beamer did not work with docutils 0.4, seemingly due to changes in the LaTeX writer.
+* Date approximate. Earlier versions of rst2beamer did not work with docutils
+  0.4, seemingly due to changes in the LaTeX writer.
 
 
 v0.2.0, 2007-08-30
