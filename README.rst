@@ -47,16 +47,16 @@ versions of a presentation.
 
 .. note::
 
-	Depending on your platform, the script may be installed as ``rst2beamer``,
-	or ``rst2beamer.py``.
+    Depending on your platform, the script may be installed as ``rst2beamer``,
+    or ``rst2beamer.py``.
 
 rst2beamer is called::
 
-  rst2beamer [options] [<source> [<destination>]]
+    $ rst2beamer [options] [<source> [<destination>]]
 
 For example::
 
-	rst2beamer infile.txt outfile.tex
+    $ rst2beamer infile.txt outfile.tex
 
 where ``infile.txt`` contains the ReST and ``outfile.tex`` contains the
 produced Beamer LaTeX.
