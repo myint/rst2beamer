@@ -1,5 +1,12 @@
 #!/bin/bash -ex
 
-./rst2beamer.py test/simple_slide_test.rst .tmp.tex
-diff test/simple_slide_test_expected.tex .tmp.tex
-rm -f .tmp.tex
+for base in figure_centering_test \
+            hyperlink_color \
+            overlay_test \
+            sectioning_test \
+            simple_slide_test
+do
+    ./rst2beamer.py test/$base.rst .tmp.tex
+    diff test/${base}_expected.tex .tmp.tex
+    rm -f .tmp.tex
+done
