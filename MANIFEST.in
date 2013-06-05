@@ -1,6 +1,6 @@
 recursive-include docs/examples *.rst *.pdf
 include docs/MANUAL.*
-include docs/HISTORY.txt
+include docs/HISTORY.rst
 include rst2beamer.py
-prune docs/DEVNOTES.txt
-prune docs/TODO.txt
+prune docs/DEVNOTES.rst
+prune docs/TODO.rst
