@@ -411,7 +411,8 @@ directive::
 Codeblocks
 ----------
 
-Many presentations will need to display programming code. ReST already allows sourcecode to be included with the literal environment::
+Many presentations will need to display programming code. ReST already allows
+sourcecode to be included with the literal environment::
 
    ::
 
@@ -420,7 +421,9 @@ Many presentations will need to display programming code. ReST already allows so
 		bar = unicode (quux)
 		return 25
 
-rst2beamer improves on this with ``code-block`` directive. In the simplest use, ``code-block`` (or it's synonym, ``sourcecode``) duplicates the literal enviroment::
+rst2beamer improves on this with ``code-block`` directive. In the simplest use,
+``code-block`` (or it's synonym, ``sourcecode``) duplicates the literal
+enviroment::
 
    .. code-block::
 
@@ -429,15 +432,25 @@ rst2beamer improves on this with ``code-block`` directive. In the simplest use, 
    		bar = unicode (quux)
    		return 25
 
-However, if the Pygments syntax coloring library is installed, and the commandline argument ``--codeblocks-use-pygments`` is used, keywords and syntax will be highlighted in a language appropriate manner.
+However, if the Pygments syntax coloring library is installed, and the
+commandline argument ``--codeblocks-use-pygments`` is used, keywords and syntax
+will be highlighted in a language appropriate manner.
 
 The language is specified by a optional argument to ``code-block``::
 
    .. code-block:: python
 
-The language abbreviation is any of the "names" recognised by Pygments, which for the most part are common sense (e.g. *perl*, *cpp*, *java*). If the language is not provided, it is deduced in two ways. First if the commandline argument ``--codeblocks-default-language`` has been used, it sets the language for any unspecified codeblocks. Otherwise, the code is parsed in an attempt to deduce its type.
+The language abbreviation is any of the "names" recognised by Pygments, which
+for the most part are common sense (e.g. *perl*, *cpp*, *java*). If the
+language is not provided, it is deduced in two ways. First if the commandline
+argument ``--codeblocks-default-language`` has been used, it sets the language
+for any unspecified codeblocks. Otherwise, the code is parsed in an attempt to
+deduce its type.
 
-If tabs are used for indenting in a ReST source document, code can appear overly spread out (8 spaces per tabs). The ``--codeblocks-replace-tabs`` commandline option can be used to set the leading tabs in a codeblock ot a different number of spaces.
+If tabs are used for indenting in a ReST source document, code can appear
+overly spread out (8 spaces per tabs). The ``--codeblocks-replace-tabs``
+commandline option can be used to set the leading tabs in a codeblock ot a
+different number of spaces.
 
 .. caution::
 
@@ -476,7 +489,9 @@ formatted output::
 Earlier versions of rst2beamer did not work with docutils 0.4, seemingly due
 to changes in the LaTeX writer. While this has been fixed, most work has been
 done with docutils snapshots from version 0.5 and up. In balance, users are
-recommended to keep docutils updated. More recently, changes in the LaTeX writer in docutils 0.6 broke rst2beamer again. We believe all those bugs have been caught.
+recommended to keep docutils updated. More recently, changes in the LaTeX
+writer in docutils 0.6 broke rst2beamer again. We believe all those bugs have
+been caught.
 
 Not all features of beamer are supported, and some - that deal with with page
 layout or presentation - may never be. Introducing complex syntax to achieve
@@ -485,9 +500,13 @@ easy-to-write format. If you need a complex presentation, use Powerpoint or
 Keynote.
 
 If the content for an individual slide is too large, it will simply overflow
-the edges of the slide and disappear. This usually occurs with large or long blocks of literal text that LaTeX is unable to wrap or reshape suitably. Arguably, this is a sign you should put less on each slide.
+the edges of the slide and disappear. This usually occurs with large or long
+blocks of literal text that LaTeX is unable to wrap or reshape suitably.
+Arguably, this is a sign you should put less on each slide.
 
-Getting your sections and frames confused (by being inconsistent about the titling style) can lead to cryptic LaTeX errors: "Runaway argument? File ended while scanning ..."
+Getting your sections and frames confused (by being inconsistent about the
+titling style) can lead to cryptic LaTeX errors: "Runaway argument? File ended
+while scanning ..."
 
 
 Development notes
@@ -515,7 +534,8 @@ Pythonistas for use at conferences.
 Alternatives
 ~~~~~~~~~~~~
 
-Other presentation formats were considered as output options for ReST and discarded as follows:
+Other presentation formats were considered as output options for ReST and
+discarded as follows:
 
 * **ReportLab's Pythonpoint** requires a fixed frame size and would need
   custom XML output. Styling is done through Reportlab stylesheets, which can
