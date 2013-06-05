@@ -7,7 +7,7 @@ Simple columns
     .. image:: plot.png
        :width: 130%
 
-    
+
     * bullet 1
     * bullet 2
     * bullet 3
@@ -24,15 +24,15 @@ Explicit columns
 
         .. image:: plot.png
 
-        
+
     .. r2b-column::
-    
+
         * bullet 1
     	* bullet 2
     	* bullet 3
 
-    
-    
+
+
 A slide without columns
 -----------------------
 

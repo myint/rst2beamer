@@ -62,4 +62,3 @@ Default overlaying enumerated list:
 
 #. default enumerated 1
 #. default enumerated 2
-

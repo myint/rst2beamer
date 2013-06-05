@@ -12,7 +12,7 @@ The document is intended to test most features of rst2beamer in one go, such
 any new versions can be quickly verified by calling::
 
 	rst2beamer test_all.rst test_all.tex
-	
+
 However testing certain options will require running rst2beamer with flags.
 These are marked below.
 
@@ -41,10 +41,10 @@ Simple columns
 	This is a demonstration of the rst2beamer simple column directive. It
 	should turn every element underneath it into a column, side by side with
 	each other.
-	
+
 	So here, we should end up with three columns of equal width, occupying 0.90
 	of the page in total (the default).
-	
+
 	* Does it
 	* handle lists
 	* properly?
@@ -60,7 +60,7 @@ Simple columns with a set width
 	set width.
 
 	The total width has been set to 0.70.
-		
+
 
 Testing containers as columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -69,7 +69,7 @@ Testing containers as columns
 
 	This uses a container to set out the columns.
 
-	There should be two columns taking up 0.90 of the page. 
+	There should be two columns taking up 0.90 of the page.
 
 
 Testing explicit columns
@@ -85,7 +85,7 @@ Testing explicit columns
 
 		There should be two columns sharing the default width of 0.90.
 
-		Note this column should have two paragraphs. 
+		Note this column should have two paragraphs.
 
 
 Testing explicit columns with widths
@@ -118,7 +118,7 @@ the ``shownotes`` option. For example::
 
 Testing the note directive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-		
+
 
 There is a note on this page.
 
@@ -188,7 +188,7 @@ The below should appear as indented Python code with a monospace font::
 
 	for i in xrange (10):
 		print "foo", i
-		
+
 
 Parsed literals
 ~~~~~~~~~~~~~~~
@@ -205,7 +205,7 @@ some keywords in italics:
 Codeblocks
 ~~~~~~~~~~
 
-The below should appear as a simple literal blocks, or highlighted if you use pygments: 
+The below should appear as a simple literal blocks, or highlighted if you use pygments:
 
 .. code-block:: python
 
@@ -213,4 +213,3 @@ The below should appear as a simple literal blocks, or highlighted if you use py
 		global baz
 		bar = unicode (quux)
 		return 25
-				

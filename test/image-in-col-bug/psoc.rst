@@ -30,4 +30,3 @@ Why micro-controllers?
 - small
 - put them in anything
 - $12 billion/year industry
-

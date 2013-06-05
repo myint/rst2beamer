@@ -68,4 +68,3 @@ Slide 6
 =======
 
 A slide.
-

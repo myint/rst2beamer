@@ -27,4 +27,3 @@ This slide defaults to the document's fragile setting.
 
 - default bullet 1
 - default bullet 2
-

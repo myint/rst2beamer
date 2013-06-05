@@ -37,4 +37,3 @@ Slide 5
 =======
 
 .. image:: plot.png
-
