@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+"""Installer for rst2beamer."""
+
 import ast
 import os
 
