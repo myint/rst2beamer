@@ -90,7 +90,7 @@ BEAMER_SPEC = (
             ),
 
             (
-                'Center figures.  All includegraphics statements will be put '
+                'Center figures. All includegraphics statements will be put '
                 'inside center environments.',
                 ['--centerfigs'],
                 {'default': True, }
@@ -109,7 +109,7 @@ BEAMER_SPEC = (
             (
                 # TODO: this doesn't seem to do anything ...
                 'Specify document options. Multiple options can be given, '
-                'separated by commas.  Default is "10pt,a4paper".',
+                'separated by commas. Default is "10pt,a4paper".',
                 ['--documentoptions'],
                 {'default': '', }
             ),
@@ -172,7 +172,7 @@ BEAMER_DEFAULTS = {
     'output_encoding': 'latin-1',
     'documentclass': 'beamer',
     'documentoptions': 't',
-    # text is at the top of each slide rather than centered.  Changing to
+    # text is at the top of each slide rather than centered. Changing to
     # 'c' centers the text on each slide (vertically)
 }
 
@@ -370,7 +370,7 @@ def has_sub_sections(node):
     section.
 
     The function is going to be used to assess
-    whether or not a certain section is the lowest level.  Sections
+    whether or not a certain section is the lowest level. Sections
     that have not sub-sections (i.e. no children with the tagname
     section) are assumed to be Beamer slides
 
@@ -804,9 +804,9 @@ class BeamerTranslator(LaTeXTranslator):
     def __init__(self, document):
         LaTeXTranslator.__init__(self, document)
 
-        self.organization = None  # used for Beamer title and possibly
-                                # header/footer.  Set from docinfo
-        # record the the settings for codeblocks
+        # Used for Beamer title and possibly header/footer. Set from docinfo
+        # record the the settings for codeblocks.
+        self.organization = None
         self.cb_use_pygments = document.settings.cb_use_pygments
         self.cb_replace_tabs = document.settings.cb_replace_tabs
         self.cb_default_lang = document.settings.cb_default_lang
@@ -877,7 +877,7 @@ class BeamerTranslator(LaTeXTranslator):
         self.shortauthor = document.settings.shortauthor
         self.shorttitle = document.settings.shorttitle
         # using a False default because
-        # True is the actual default.  If you are trying to pass in a value
+        # True is the actual default. If you are trying to pass in a value
         # and I can't determine what you really meant, I am assuming you
         # want something other than the actual default.
         self.centerfigs = string_to_bool(
@@ -968,7 +968,7 @@ class BeamerTranslator(LaTeXTranslator):
             self.pdfauthor.append(self.attval(node.astext()))
         if self.use_latex_docinfo:
             if name in ('author', 'contact', 'address'):
-                # We attach these to the last author.  If any of them precedes
+                # We attach these to the last author. If any of them precedes
                 # the first author, put them in a separate "author" group
                 # (in lack of better semantics).
                 if name == 'author' or not self.author_stack:
@@ -1077,7 +1077,7 @@ class BeamerTranslator(LaTeXTranslator):
         if node.astext() == 'blankslide':
             # a blankslide has no title, but is otherwise processed as normal,
             # meaning that the title is blank, but the slide can have some
-            # content.  It must at least contain a comment.
+            # content. It must at least contain a comment.
             raise nodes.SkipNode
         elif (self.section_level == self.frame_level + 1):  # 1
             self.out.append('\\frametitle{%s}\n\n' %
@@ -1133,19 +1133,11 @@ class BeamerTranslator(LaTeXTranslator):
         pass
 
     def visit_bullet_list(self, node):
-        # NOTE: required by the loss of 'topic_classes' in docutils 0.6
-        # TODO: so what replaces it?
-        if (hasattr(self, 'topic_classes') and
-                ('contents' in self.topic_classes)):
-            if self.use_latex_toc:
-                raise nodes.SkipNode
-            self.out.append('\\begin{list}{}{}\n')
-        else:
-            begin_str = '\\begin{itemize}'
-            if self.node_overlay_check(node):
-                begin_str += '[<+-| alert@+>]'
-            begin_str += '\n'
-            self.out.append(begin_str)
+        begin_str = '\\begin{itemize}'
+        if self.node_overlay_check(node):
+            begin_str += '[<+-| alert@+>]'
+        begin_str += '\n'
+        self.out.append(begin_str)
 
     def node_overlay_check(self, node):
         """Assuming that the bullet or enumerated list is the child of a slide,
@@ -1164,37 +1156,24 @@ class BeamerTranslator(LaTeXTranslator):
             return self.overlay_bullets
 
     def depart_bullet_list(self, node):
-        # NOTE: see `visit_bullet_list`
-        if (hasattr(self, 'topic_classes') and
-                ('contents' in self.topic_classes)):
-            self.out.append('\\end{list}\n')
-        else:
-            self.out.append('\\end{itemize}\n')
+        self.out.append('\\end{itemize}\n')
 
     def visit_enumerated_list(self, node):
         # LaTeXTranslator has a very complicated
         # visit_enumerated_list that throws out much of what latex
-        # does to handle them for us.  I am going back to relying
+        # does to handle them for us. I am going back to relying
         # on latex.
-        if ('contents' in getattr(self, 'topic_classes', [])):
-            if self.use_latex_toc:
-                raise nodes.SkipNode
-            self.out.append('\\begin{list}{}{}\n')
-        else:
-            begin_str = '\\begin{enumerate}'
-            if self.node_overlay_check(node):
-                begin_str += '[<+-| alert@+>]'
-            begin_str += '\n'
-            self.out.append(begin_str)
-            if 'start' in node:
-                self.out.append('\\addtocounter{enumi}{%d}\n'
-                                % (node['start'] - 1))
+        begin_str = '\\begin{enumerate}'
+        if self.node_overlay_check(node):
+            begin_str += '[<+-| alert@+>]'
+        begin_str += '\n'
+        self.out.append(begin_str)
+        if 'start' in node:
+            self.out.append('\\addtocounter{enumi}{%d}\n'
+                            % (node['start'] - 1))
 
     def depart_enumerated_list(self, node):
-        if ('contents' in getattr(self, 'topic_classes', [])):
-            self.out.append('\\end{list}\n')
-        else:
-            self.out.append('\\end{enumerate}\n')
+        self.out.append('\\end{enumerate}\n')
 
     def visit_columnset(self, node):
         assert not self.in_columnset, \
