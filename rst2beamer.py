@@ -530,8 +530,8 @@ class CodeBlockDirective(Directive):
         literal['linenos'] = 'linenos' in self.options
         return [literal]
 
-for name in ['code-block', 'sourcecode']:
-    directives.register_directive(name, CodeBlockDirective)
+for _name in ['code-block', 'sourcecode']:
+    directives.register_directive(_name, CodeBlockDirective)
 
 
 class SimpleColsDirective(Directive):
@@ -570,8 +570,8 @@ class SimpleColsDirective(Directive):
         # Postconditions & return:
         return [cset]
 
-for name in ['r2b-simplecolumns', 'r2b_simplecolumns']:
-    directives.register_directive(name, SimpleColsDirective)
+for _name in ['r2b-simplecolumns', 'r2b_simplecolumns']:
+    directives.register_directive(_name, SimpleColsDirective)
 
 
 class ColumnSetDirective(Directive):
@@ -636,8 +636,8 @@ class ColumnSetDirective(Directive):
         # Postconditions & return:
         return [cset]
 
-for name in ['r2b-columnset', 'r2b_columnset']:
-    directives.register_directive(name, ColumnSetDirective)
+for _name in ['r2b-columnset', 'r2b_columnset']:
+    directives.register_directive(_name, ColumnSetDirective)
 
 
 class ColumnDirective(Directive):
@@ -677,8 +677,8 @@ class ColumnDirective(Directive):
         # Postconditions & return:
         return [col]
 
-for name in ['r2b-column', 'r2b_column']:
-    directives.register_directive(name, ColumnDirective)
+for _name in ['r2b-column', 'r2b_column']:
+    directives.register_directive(_name, ColumnDirective)
 
 
 class NoteDirective(Directive):
@@ -703,8 +703,8 @@ class NoteDirective(Directive):
         # Postconditions & return:
         return [note_node]
 
-for name in ['r2b-note', 'r2b_note']:
-    directives.register_directive(name, NoteDirective)
+for _name in ['r2b-note', 'r2b_note']:
+    directives.register_directive(_name, NoteDirective)
 
 
 class beamer_section(Directive):
@@ -732,13 +732,13 @@ class beamer_section(Directive):
         section_node.tagname = 'beamer_section'
         return [section_node]
 
-for name in ['beamer_section', 'r2b-section', 'r2b_section']:
-    directives.register_directive(name, beamer_section)
+for _name in ['beamer_section', 'r2b-section', 'r2b_section']:
+    directives.register_directive(_name, beamer_section)
 
 
 class onlybeamer_directive(Directive):
 
-    """A directive that encloses its content in \only<beamer>{content} so that
+    r"""A directive that encloses its content in \only<beamer>{content} so that
     the content shows up in the presentation and not in the handouts or article
     version."""
     required_arguments = 0
@@ -764,7 +764,7 @@ class onlybeamer_directive(Directive):
 
 class block_directive(Directive):
 
-    """A directive that encloses its content in.
+    r"""A directive that encloses its content in.
 
     \begin{block}{title}
        content
@@ -997,7 +997,7 @@ class BeamerTranslator(LaTeXTranslator):
             self.context.append(' \\\\\n')
 
     def latex_image_length(self, width_str):
-        match = re.match('(\d*\.?\d*)\s*(\S*)', width_str)
+        match = re.match(r'(\d*\.?\d*)\s*(\S*)', width_str)
         if not match:
             # fallback
             return width_str
@@ -1058,7 +1058,7 @@ class BeamerTranslator(LaTeXTranslator):
                 self.out.append(self.begin_frametag(node))
             LaTeXTranslator.visit_section(self, node)
 
-    def bookmark(self, node):
+    def bookmark(self, _):
         """I think beamer alread handles bookmarks well, so I don't want
         duplicates."""
         return ''
@@ -1175,13 +1175,13 @@ class BeamerTranslator(LaTeXTranslator):
     def depart_enumerated_list(self, node):
         self.out.append('\\end{enumerate}\n')
 
-    def visit_columnset(self, node):
+    def visit_columnset(self, _):
         assert not self.in_columnset, \
             'already in column set, which cannot be nested'
         self.in_columnset = True
         self.out.append('\\begin{columns}[T]\n')
 
-    def depart_columnset(self, node):
+    def depart_columnset(self, _):
         assert self.in_columnset, 'not in column set'
         self.in_columnset = False
         self.out.append('\\end{columns}\n')
@@ -1191,16 +1191,16 @@ class BeamerTranslator(LaTeXTranslator):
         self.in_column = True
         self.out.append('\\column{%.2f\\textwidth}\n' % node.width)
 
-    def depart_column(self, node):
+    def depart_column(self, _):
         self.in_column = False
         self.out.append('\n')
 
-    def visit_beamer_note(self, node):
+    def visit_beamer_note(self, _):
         assert not self.in_note, 'already in note, which cannot be nested'
         self.in_note = True
         self.out.append('\\note{\n')
 
-    def depart_beamer_note(self, node):
+    def depart_beamer_note(self, _):
         self.in_note = False
         self.out.append('}\n')
 
@@ -1209,7 +1209,7 @@ class BeamerTranslator(LaTeXTranslator):
             self.out.append('\\only<handout>{%s}\n' % node.handouttext)
         self.out.append('\\only<beamer>{\n')
 
-    def depart_onlybeamer(self, node):
+    def depart_onlybeamer(self, _):
         self.out.append('}\n')
 
     def visit_block(self, node):
@@ -1219,7 +1219,7 @@ class BeamerTranslator(LaTeXTranslator):
             title = ''
         self.out.append('\\begin{block}{%s}\n' % title)
 
-    def depart_block(self, node):
+    def depart_block(self, _):
         self.out.append('\\end{block}\n')
 
     def _get_admonition_class(self, node):
