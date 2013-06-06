@@ -258,26 +258,6 @@ def adjust_indent_spaces(strn, orig_width=8, new_width=3):
     return strn
 
 
-def index(seq, f, fail=None):
-    """Return the index of the first item in seq where f(item) is True.
-
-    :Parameters:
-        seq
-            A sequence or iterable
-        f
-            A boolean function an element of `seq`, e.g. `lambda x: x==4`
-        fail
-            The value to return if no item is found in seq.
-
-    While this could be written in a neater fashion in Python 2.6, this method
-    maintains compatiability with earlier version.
-
-    """
-    for index in (i for i in range(len(seq)) if f(seq[i])):
-        return index
-    return fail
-
-
 def node_has_class(node, classes):
     """Does the node have one of these classes?
 
