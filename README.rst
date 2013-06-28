@@ -24,7 +24,7 @@ Installation
 
 ::
 
-   $ pip install --user git+https://github.com/myint/rst2beamer
+   $ pip install --upgrade rst2beamer3k
 
 
 Usage
