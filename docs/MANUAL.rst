@@ -471,7 +471,7 @@ spaces and tabs. If you do, errors can occur that are difficult to diagnose as
 blocks will *appear* to be correctly indented.
 
 As is normal for LaTeX, it may be necessary to run it twice over rst2beamer
-output for the the result to properly reflect the source file, if certain
+output for the result to properly reflect the source file, if certain
 structures (like sections) have been changed.
 
 Following a double-colon (for preformatting) with a parsed-literal block like
