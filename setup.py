@@ -39,7 +39,7 @@ setup(
     keywords='presentation docutils rst restructured-text',
     author='Ryan Krauss & Paul-Michael Agapow',
     author_email='ryanwkrauss@gmail.com, agapow@bbsrc.ac.uk',
-    url='http://www.agapow.net/software/rst2beamer',
+    url='https://github.com/myint/rst2beamer',
     license='GPL',
     py_modules=['rst2beamer'],
     zip_safe=False,
