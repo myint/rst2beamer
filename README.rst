@@ -45,11 +45,6 @@ Some examples can be found in the ``docs/examples`` directory of the
 distribution. In practice, rst2beamer can be used with ``pdflatex`` to get PDF
 versions of a presentation.
 
-.. note::
-
-    Depending on your platform, the script may be installed as ``rst2beamer``,
-    or ``rst2beamer.py``.
-
 rst2beamer is called::
 
     $ rst2beamer [options] [<source> [<destination>]]
@@ -63,25 +58,25 @@ produced Beamer LaTeX.
 
 It supports the usual docutils and LaTeX writer (rst2latex) options, save the
 ``documentclass`` option (which is fixed to ``beamer``) and hyperref options
-(which are already set in beamer). It also supports:
+(which are already set in beamer). It also supports::
 
---theme=THEME           Specify Beamer theme.
---overlaybullets=OVERLAYBULLETS
-                        Overlay bulleted items. Put [<+-| alert@+>] at the end
-                        of \begin{itemize} so that Beamer creats an overlay
-                        for each bulleted item and the presentation reveals
-                        one bullet at a time
---centerfigs=CENTERFIGS
-                        Center figures.  All includegraphics statements will
-                        be put inside center environments.
---documentoptions=DOCUMENTOPTIONS
-                        Specify document options. Multiple options can be
-                        given, separated by commas.  Default is
-                        "10pt,a4paper".
---shownotes=SHOWNOTES   Print embedded notes along with the slides. Possible
-                        arguments include 'false' (don't show), 'only' (show
-                        only notes), 'left', 'right', 'top', 'bottom' (show in
-                        relation to the annotated slide).
+   --theme=THEME           Specify Beamer theme.
+   --overlaybullets=OVERLAYBULLETS
+                           Overlay bulleted items. Put [<+-| alert@+>] at the
+                           end of \begin{itemize} so that Beamer creats an
+                           overlay for each bulleted item and the presentation
+                           reveals one bullet at a time
+   --centerfigs=CENTERFIGS
+                           Center figures.  All includegraphics statements will
+                           be put inside center environments.
+   --documentoptions=DOCUMENTOPTIONS
+                           Specify document options. Multiple options can be
+                           given, separated by commas.  Default is
+                           "10pt,a4paper".
+   --shownotes=SHOWNOTES   Print embedded notes along with the slides. Possible
+                           arguments include 'false' (don't show), 'only' (show
+                           only notes), 'left', 'right', 'top', 'bottom' (show
+                           in relation to the annotated slide).
 
 
 Limitations
