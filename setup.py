@@ -21,7 +21,7 @@ with open('README.rst') as readme:
 
 
 setup(
-    name='rst2beamer',
+    name='rst2beamer3k',
     version=version(),
     description='A docutils writer and script for converting restructured '
                 'text to the Beamer presentation format',
@@ -30,6 +30,8 @@ setup(
         'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
         'Topic :: Text Processing :: Markup',
         'Topic :: Utilities',
         'Topic :: Multimedia :: Graphics :: Presentation',
