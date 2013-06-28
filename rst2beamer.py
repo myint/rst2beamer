@@ -115,9 +115,9 @@ BEAMER_SPEC = (
             ),
             (
                 'Print embedded notes along with the slides. Possible '
-    "arguments include 'false' (don't show), 'only' (show "
-    "only notes), 'left', 'right', 'top', 'bottom' (show in "
-    'relation to the annotated slide).',
+                "arguments include 'false' (don't show), 'only' (show "
+                "only notes), 'left', 'right', 'top', 'bottom' (show in "
+                'relation to the annotated slide).',
                 ['--shownotes'],
                 {
                     'action': 'store',
@@ -130,9 +130,9 @@ BEAMER_SPEC = (
             # should the pygments highlighter be used for codeblocks?
             (
                 'Use the Pygments syntax highlighter to color blocks of '
-    'code. Otherwise, they will be typeset as simple literal '
-    'text. Obviously Pygments must be installed or an error. '
-    'will be raised. ',
+                'code. Otherwise, they will be typeset as simple literal '
+                'text. Obviously Pygments must be installed or an error. '
+                'will be raised. ',
                 ['--codeblocks-use-pygments'],
                 {
                     'action': 'store_true',
@@ -1203,14 +1203,13 @@ class BeamerTranslator(LaTeXTranslator):
         self.out.append('\\end{block}\n')
 
     def _get_admonition_class(self, node):
-        # strip the generic 'admonition' from the list of classes
+        # Strip the generic 'admonition' from the list of classes.
         filt_classes = [cls for cls in node['classes']
                         if cls != 'admonition']
         assert len(filt_classes) == 1, 'I need exactly 1 classe: ' + str(
             filt_classes)
-        myclass = filt_classes[
-            0].lower(
-            )  # I think docutils lowers anyways, but just to be sure
+        # I think docutils lowers anyways, but just to be sure.
+        myclass = filt_classes[0].lower()
         return myclass
 
     def _get_alertblock_type(self, myclass):
