@@ -3,8 +3,8 @@ rst2beamer
 ==========
 
 .. image:: https://travis-ci.org/myint/rst2beamer.png?branch=master
-   :target: https://travis-ci.org/myint/rst2beamer
-   :alt: Build status
+    :target: https://travis-ci.org/myint/rst2beamer
+    :alt: Build status
 
 
 Introduction
@@ -24,7 +24,7 @@ Installation
 
 ::
 
-   $ pip install --upgrade rst2beamer3k
+    $ pip install --upgrade rst2beamer3k
 
 
 Usage
@@ -60,23 +60,23 @@ It supports the usual docutils and LaTeX writer (rst2latex) options, save the
 ``documentclass`` option (which is fixed to ``beamer``) and hyperref options
 (which are already set in beamer). It also supports::
 
-   --theme=THEME           Specify Beamer theme.
-   --overlaybullets=OVERLAYBULLETS
-                           Overlay bulleted items. Put [<+-| alert@+>] at the
-                           end of \begin{itemize} so that Beamer creats an
-                           overlay for each bulleted item and the presentation
-                           reveals one bullet at a time
-   --centerfigs=CENTERFIGS
-                           Center figures.  All includegraphics statements will
-                           be put inside center environments.
-   --documentoptions=DOCUMENTOPTIONS
-                           Specify document options. Multiple options can be
-                           given, separated by commas.  Default is
-                           "10pt,a4paper".
-   --shownotes=SHOWNOTES   Print embedded notes along with the slides. Possible
-                           arguments include 'false' (don't show), 'only' (show
-                           only notes), 'left', 'right', 'top', 'bottom' (show
-                           in relation to the annotated slide).
+    --theme=THEME           Specify Beamer theme.
+    --overlaybullets=OVERLAYBULLETS
+                            Overlay bulleted items. Put [<+-| alert@+>] at the
+                            end of \begin{itemize} so that Beamer creats an
+                            overlay for each bulleted item and the presentation
+                            reveals one bullet at a time
+    --centerfigs=CENTERFIGS
+                            Center figures.  All includegraphics statements will
+                            be put inside center environments.
+    --documentoptions=DOCUMENTOPTIONS
+                            Specify document options. Multiple options can be
+                            given, separated by commas.  Default is
+                            "10pt,a4paper".
+    --shownotes=SHOWNOTES   Print embedded notes along with the slides. Possible
+                            arguments include 'false' (don't show), 'only' (show
+                            only notes), 'left', 'right', 'top', 'bottom' (show
+                            in relation to the annotated slide).
 
 
 Limitations
@@ -114,8 +114,8 @@ References
 ==========
 
 .. [#homepage] rst2beamer homepages at `agapow.net
-   <http://www.agapow/net/software/rst2beamer>`__ and `cs.siue.edu
-   <http://home.cs.siue.edu/rkrauss/python_website/>`__
+    <http://www.agapow/net/software/rst2beamer>`__ and `cs.siue.edu
+    <http://home.cs.siue.edu/rkrauss/python_website/>`__
 
 .. [#docutils] `Docutils homepage <http://docutils.sourceforge.net/>`__
 
