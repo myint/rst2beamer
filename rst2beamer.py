@@ -246,11 +246,11 @@ def adjust_indent_spaces(strn, orig_width=8, new_width=3):
     # Preconditions & preparation:
     assert (1 <= orig_width)
     assert (0 <= new_width)
-    if (orig_width == new_width):
+    if orig_width == new_width:
         return strn
     # Main:
     match = LEADING_SPACE_RE.match(strn)
-    if (match):
+    if match:
         indent_len = match.end() - match.start()
         indent_cnt = indent_len // orig_width
         indent_depth = indent_cnt * orig_width
@@ -276,7 +276,7 @@ def node_has_class(node, classes):
     """
     # Preconditions & preparation:
     # wrap single name in list
-    if (not (issubclass(type(classes), list))):
+    if not (issubclass(type(classes), list)):
         classes = [classes]
     # Main:
     for cname in classes:
@@ -305,7 +305,7 @@ def node_lang_class(node):
     """
     # Main:
     for cname in node['classes']:
-        if (cname.startswith('lang-')):
+        if cname.startswith('lang-'):
             return cname[5:]
     return None
 
@@ -579,7 +579,7 @@ class ColumnSetDirective(Directive):
         self.assert_has_content()
         # get and check width of column set
         width = self.options.get('width', 0.9)
-        if ((width <= 0.0) or (1.0 < width)):
+        if (width <= 0.0) or (1.0 < width):
             raise self.error(
                 "columnset width '%f' must be between 0.0 and 1.0" % width)
         # Main:
@@ -593,24 +593,24 @@ class ColumnSetDirective(Directive):
         unsized_cols = []
         for child in cset:
             child_width = getattr(child, 'width', None)
-            if (child_width):
+            if child_width:
                 used_width += child_width
             else:
                 unsized_cols.append(child)
 
-        if (1.0 < used_width):
+        if 1.0 < used_width:
             raise self.error(
                 "cumulative column width '%f' exceeds 1.0" % used_width)
         # set unsized widths
-        if (unsized_cols):
+        if unsized_cols:
             excess_width = width - used_width
-            if (excess_width <= 0.0):
+            if excess_width <= 0.0:
                 raise self.error(
                     "no room for unsized columns '%f'" % excess_width)
             col_width = excess_width // len(unsized_cols)
             for child in unsized_cols:
                 child.width = col_width
-        elif (width < used_width):
+        elif width < used_width:
             # TODO: should post a warning?
             pass
         # Postconditions & return:
@@ -641,7 +641,7 @@ class ColumnDirective(Directive):
         self.assert_has_content()
         # get width
         width = self.options.get('width', None)
-        if (width is not None):
+        if width is not None:
             if (width <= 0.0) or (1.0 < width):
                 raise self.error(
                     "columnset width '%f' must be between 0.0 and 1.0" %
@@ -804,7 +804,7 @@ class BeamerTranslator(LaTeXTranslator):
             '}\n',
         ])
 
-        if (self.cb_use_pygments):
+        if self.cb_use_pygments:
             self.head_prefix.extend([
                 '\\usepackage{fancyvrb}\n',
                 '\\usepackage{color}\n',
@@ -820,19 +820,19 @@ class BeamerTranslator(LaTeXTranslator):
         if shownotes == SHOWNOTES_TRUE:
             shownotes = SHOWNOTES_RIGHT
         use_pgfpages = True
-        if (shownotes == SHOWNOTES_FALSE):
+        if shownotes == SHOWNOTES_FALSE:
             option_str = 'hide notes'
             use_pgfpages = False
-        elif (shownotes == SHOWNOTES_ONLY):
+        elif shownotes == SHOWNOTES_ONLY:
             option_str = 'show only notes'
         else:
-            if (shownotes == SHOWNOTES_LEFT):
+            if shownotes == SHOWNOTES_LEFT:
                 notes_posn = 'left'
-            elif (shownotes in SHOWNOTES_RIGHT):
+            elif shownotes in SHOWNOTES_RIGHT:
                 notes_posn = 'right'
-            elif (shownotes == SHOWNOTES_TOP):
+            elif shownotes == SHOWNOTES_TOP:
                 notes_posn = 'top'
-            elif (shownotes == SHOWNOTES_BOTTOM):
+            elif shownotes == SHOWNOTES_BOTTOM:
                 notes_posn = 'bottom'
             else:
                 # TODO: better error handling
@@ -843,7 +843,7 @@ class BeamerTranslator(LaTeXTranslator):
             self.head_prefix.append('\\usepackage{pgfpages}\n')
         self.head_prefix.append('\\setbeameroption{%s}\n' % option_str)
 
-        if (self.cb_use_pygments):
+        if self.cb_use_pygments:
             from pygments.formatters import LatexFormatter
             self.head_prefix.extend([
                 LatexFormatter().get_style_defs(),
@@ -1046,7 +1046,7 @@ class BeamerTranslator(LaTeXTranslator):
     def depart_section(self, node):
         # Remove counter for potential subsections:
         LaTeXTranslator.depart_section(self, node)
-        if (self.section_level == self.frame_level):  # 0
+        if self.section_level == self.frame_level:  # 0
             self.out.append(self.end_frametag())
 
     def visit_title(self, node):
@@ -1059,7 +1059,7 @@ class BeamerTranslator(LaTeXTranslator):
             # meaning that the title is blank, but the slide can have some
             # content. It must at least contain a comment.
             raise nodes.SkipNode
-        elif (self.section_level == self.frame_level + 1):  # 1
+        elif self.section_level == self.frame_level + 1:  # 1
             self.out.append('\\frametitle{%s}\n\n' %
                             self.encode(node.astext()))
             raise nodes.SkipNode
@@ -1067,7 +1067,7 @@ class BeamerTranslator(LaTeXTranslator):
             LaTeXTranslator.visit_title(self, node)
 
     def depart_title(self, node):
-        if (self.section_level != self.frame_level + 1):  # 1
+        if self.section_level != self.frame_level + 1:  # 1
             LaTeXTranslator.depart_title(self, node)
 
     def visit_literal_block(self, node):
@@ -1075,7 +1075,7 @@ class BeamerTranslator(LaTeXTranslator):
         # literals in docutils 0.6 to lose indenting. Thus we've solve the
         # problem be just getting rid of it. [PMA 20091020]
         # TODO: replace leading tabs like in codeblocks?
-        if (node_has_class(node, 'code-block') and self.cb_use_pygments):
+        if node_has_class(node, 'code-block') and self.cb_use_pygments:
             self.visit_codeblock(node)
         else:
             self.out.append('\\setbeamerfont{quote}{parent={}}\n')
@@ -1083,7 +1083,7 @@ class BeamerTranslator(LaTeXTranslator):
 
     def depart_literal_block(self, node):
         # FIX: see `visit_literal_block`
-        if (node_has_class(node, 'code-block') and self.cb_use_pygments):
+        if node_has_class(node, 'code-block') and self.cb_use_pygments:
             self.visit_codeblock(node)
         else:
             LaTeXTranslator.depart_literal_block(self, node)
@@ -1093,14 +1093,14 @@ class BeamerTranslator(LaTeXTranslator):
         # was langauge argument defined on node?
         lang = node.get('language', None)
         # otherwise, was it defined in node classes?
-        if (lang is None):
+        if lang is None:
             lang = node_lang_class(node)
         # otherwise, use commandline argument or default
         if lang is None:
             lang = self.cb_default_lang
         # replace tabs if required
         srccode = node.rawsource
-        if (self.cb_replace_tabs):
+        if self.cb_replace_tabs:
             srccode = '\n'.join(
                 adjust_indent_spaces(x, new_width=self.cb_replace_tabs)
                 for x in srccode.split('\n'))
@@ -1240,19 +1240,19 @@ class BeamerTranslator(LaTeXTranslator):
         # NOTE: theres something weird here where ReST seems to translate
         # underscores in container identifiers into hyphens. So for the
         # moment we'll allow both.
-        if (node_has_class(node, 'r2b-simplecolumns')):
+        if node_has_class(node, 'r2b-simplecolumns'):
             self.visit_columnset(node)
             wrap_children_in_columns(node, node.children)
-        elif (node_has_class(node, 'r2b-note')):
+        elif node_has_class(node, 'r2b-note'):
             self.visit_beamer_note(node)
         else:
             # currently the LaTeXTranslator does nothing, but just in case
             LaTeXTranslator.visit_container(self, node)
 
     def depart_container(self, node):
-        if (node_has_class(node, 'r2b-simplecolumns')):
+        if node_has_class(node, 'r2b-simplecolumns'):
             self.depart_columnset(node)
-        elif (node_has_class(node, 'r2b-note')):
+        elif node_has_class(node, 'r2b-note'):
             self.depart_beamer_note(node)
         else:
             # currently the LaTeXTranslator does nothing, but just in case
