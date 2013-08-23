@@ -451,8 +451,8 @@ class beamer_note(nodes.container):
 
     """Annotations for a beamer presentation.
 
-    Named as per docutils standards and to distinguish it from core docutils
-    node type.
+    Named as per docutils standards and to distinguish it from core
+    docutils node type.
 
     """
 
@@ -625,9 +625,9 @@ class ColumnDirective(Directive):
     """A directive to explicitly create an individual column.
 
     This can only be used within the columnset directive. It can takes a
-    single optional argument 'width' to determine the column width on page.
-    If no width is given, it is recorded as None and should be later assigned
-    by the enclosing columnset.
+    single optional argument 'width' to determine the column width on
+    page. If no width is given, it is recorded as None and should be
+    later assigned by the enclosing columnset.
 
     """
     required_arguments = 0
@@ -1004,8 +1004,8 @@ class BeamerTranslator(LaTeXTranslator):
     def node_fragile_check(self, node):
         """Check whether or not a slide should be marked as fragile.
 
-        If the slide has class attributes of fragile or notfragile,
-        then the document default is overriden.
+        If the slide has class attributes of fragile or notfragile, then
+        the document default is overriden.
 
         """
         if 'notfragile' in node.attributes['classes']:
@@ -1124,8 +1124,8 @@ class BeamerTranslator(LaTeXTranslator):
         check to see if the slide has either nooverlay or overlay in its
         classes.
 
-        If not, default to the commandline
-        specification for overlaybullets.
+        If not, default to the commandline specification for
+        overlaybullets.
 
         """
         if 'nooverlay' in node.parent.attributes['classes']:
