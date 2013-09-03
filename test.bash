@@ -1,6 +1,9 @@
 #!/bin/bash -ex
 
-python -m doctest rst2beamer.py
+if [ "$TRAVIS_PYTHON_VERSION" != "2.7" ]
+then
+    python -m doctest rst2beamer.py
+fi
 
 for expected in test/*_expected.tex
 do
