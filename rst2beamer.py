@@ -179,9 +179,9 @@ BEAMER_DEFAULTS = {
 BEAMER_DEFAULT_OVERRIDES = {'use_latex_docinfo': 1}
 
 
-bool_strs = ['false', 'true', '0', '1']
-bool_vals = [False, True, False, True]
-bool_dict = dict(zip(bool_strs, bool_vals))
+BOOL_STRINGS = ['false', 'true', '0', '1']
+BOOL_VALUES = [False, True, False, True]
+BOOL_DICT = dict(zip(BOOL_STRINGS, BOOL_VALUES))
 
 PreambleCmds.documenttitle = r"""
 %% Document title
@@ -366,10 +366,10 @@ def string_to_bool(stringin, default=True):
     if isinstance(stringin, bool):
         return stringin
     temp = stringin.lower()
-    if temp not in bool_strs:
+    if temp not in BOOL_STRINGS:
         return default
     else:
-        return bool_dict[temp]
+        return BOOL_DICT[temp]
 
 
 def highlight_code(text, lang):
