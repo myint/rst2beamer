@@ -362,7 +362,24 @@ def has_sub_sections(node):
 
 
 def string_to_bool(stringin, default=True):
-    """Turn a commandline argument string into a boolean value."""
+    """Turn a commandline argument string into a boolean value.
+
+    >>> string_to_bool('True')
+    True
+
+    >>> string_to_bool('False')
+    False
+
+    >>> string_to_bool('0')
+    False
+
+    >>> string_to_bool('1')
+    True
+
+    >>> string_to_bool('abc')
+    True
+
+    """
     if isinstance(stringin, bool):
         return stringin
     temp = stringin.lower()

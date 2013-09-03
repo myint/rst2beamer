@@ -1,5 +1,7 @@
 #!/bin/bash -ex
 
+python -m doctest rst2beamer.py
+
 for expected in test/*_expected.tex
 do
     base=$(basename "$expected" '_expected.tex')
