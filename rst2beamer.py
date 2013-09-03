@@ -179,9 +179,10 @@ BEAMER_DEFAULTS = {
 BEAMER_DEFAULT_OVERRIDES = {'use_latex_docinfo': 1}
 
 
-BOOL_STRINGS = ['false', 'true', '0', '1']
-BOOL_VALUES = [False, True, False, True]
-BOOL_DICT = dict(zip(BOOL_STRINGS, BOOL_VALUES))
+BOOL_DICT = {'false': False,
+             'true': True,
+             '0': False,
+             '1': True}
 
 PreambleCmds.documenttitle = r"""
 %% Document title
@@ -361,13 +362,13 @@ def has_sub_sections(node):
     return False
 
 
-def string_to_bool(stringin, default=True):
+def string_to_bool(text, default=True):
     """Turn a commandline argument string into a boolean value.
 
-    >>> string_to_bool('True')
+    >>> string_to_bool('true')
     True
 
-    >>> string_to_bool('False')
+    >>> string_to_bool('false')
     False
 
     >>> string_to_bool('0')
@@ -380,13 +381,9 @@ def string_to_bool(stringin, default=True):
     True
 
     """
-    if isinstance(stringin, bool):
-        return stringin
-    temp = stringin.lower()
-    if temp not in BOOL_STRINGS:
-        return default
-    else:
-        return BOOL_DICT[temp]
+    if isinstance(text, bool):
+        return text
+    return BOOL_DICT.get(text.lower(), default)
 
 
 def highlight_code(text, lang):
