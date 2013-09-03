@@ -1,3 +1,4 @@
+.*.swp
 .travis-solo
 dist
 build
