@@ -133,11 +133,11 @@ BEAMER_SPEC = (
                 'code. Otherwise, they will be typeset as simple literal '
                 'text. Obviously Pygments must be installed or an error. '
                 'will be raised. ',
-                ['--codeblocks-use-pygments'],
+                ['--no-codeblocks-use-pygments'],
                 {
-                    'action': 'store_true',
+                    'action': 'store_false',
                     'dest': 'cb_use_pygments',
-                    'default': False,
+                    'default': True,
                 }
             ),
             # replace tabs inside codeblocks?

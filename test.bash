@@ -8,7 +8,7 @@ fi
 for expected in test/*_expected.tex
 do
     base=$(basename "$expected" '_expected.tex')
-    ./rst2beamer.py "test/$base.rst" .tmp.tex
+    ./rst2beamer.py --no-codeblocks-use-pygments "test/$base.rst" .tmp.tex
     diff --unified "$expected" .tmp.tex
     rm -f .tmp.tex
 done
