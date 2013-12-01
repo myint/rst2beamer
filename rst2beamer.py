@@ -1287,7 +1287,7 @@ class BeamerWriter(Latex2eWriter):
 
 def main():
     description = (
-        'Generates Beamer-flavoured LaTeX for PDF-based presentations.' +
+        'Generates Beamer-flavoured LaTeX for PDF-based presentations. ' +
         default_description)
     publish_cmdline(writer=BeamerWriter(), description=description)
 
