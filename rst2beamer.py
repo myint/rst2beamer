@@ -131,7 +131,7 @@ BEAMER_SPEC = (
             (
                 'Use the Pygments syntax highlighter to color blocks of '
                 'code. Otherwise, they will be typeset as simple literal '
-                'text. Obviously Pygments must be installed or an error. '
+                'text. Obviously Pygments must be installed or an error '
                 'will be raised. ',
                 ['--no-codeblocks-use-pygments'],
                 {
