@@ -58,7 +58,7 @@ SHOWNOTES_OPTIONS = [
     SHOWNOTES_BOTTOM,
 ]
 
-HILITE_OPTIONS = {
+HIGHLIGHT_OPTIONS = {
     'python': 'python',
     'guess': 'guess',
     'c++': 'cpp',
@@ -159,7 +159,7 @@ BEAMER_SPEC = (
                     'action': 'store',
                     'type': 'choice',
                     'dest': 'cb_default_lang',
-                    'choices': list(HILITE_OPTIONS.values()),
+                    'choices': list(HIGHLIGHT_OPTIONS.values()),
                     'default': 'guess',
                 }
             ),
