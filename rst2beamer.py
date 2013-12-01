@@ -1118,9 +1118,7 @@ class BeamerTranslator(LaTeXTranslator):
             srccode = '\n'.join(
                 adjust_indent_spaces(x, new_width=self.cb_replace_tabs)
                 for x in srccode.split('\n'))
-        # hilight the code
-        highlight_code = highlight_code(srccode, lang)
-        self.out.append('\n' + highlight_code + '\n')
+        self.out.append('\n' + highlight_code(srccode, lang) + '\n')
         raise nodes.SkipNode
 
     def depart_codeblock(self, node):
