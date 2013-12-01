@@ -76,7 +76,7 @@ BEAMER_SPEC = (
             ),
             (
                 'Overlay bulleted items. Put [<+-| alert@+>] at the end of '
-                '\\begin{itemize} so that Beamer creats an overlay for each '
+                '\\begin{itemize} so that Beamer creates an overlay for each '
                 'bulleted item and the presentation reveals one bullet at a '
                 'time',
                 ['--overlaybullets'],
@@ -153,7 +153,7 @@ BEAMER_SPEC = (
             ),
             # what language the codeblock is if not specified
             (
-                'The default language to hilight code blocks as. ',
+                'The default language to highlight code blocks as. ',
                 ['--codeblocks-default-language'],
                 {
                     'action': 'store',
@@ -1119,8 +1119,8 @@ class BeamerTranslator(LaTeXTranslator):
                 adjust_indent_spaces(x, new_width=self.cb_replace_tabs)
                 for x in srccode.split('\n'))
         # hilight the code
-        hilite_code = highlight_code(srccode, lang)
-        self.out.append('\n' + hilite_code + '\n')
+        highlight_code = highlight_code(srccode, lang)
+        self.out.append('\n' + highlight_code + '\n')
         raise nodes.SkipNode
 
     def depart_codeblock(self, node):
