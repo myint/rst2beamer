@@ -1053,14 +1053,14 @@ class BeamerTranslator(LaTeXTranslator):
             LaTeXTranslator.visit_section(self, node)
 
     def bookmark(self, _):
-        """I think beamer alread handles bookmarks well, so I don't want
+        """I think beamer already handles bookmarks well, so I don't want
         duplicates."""
         return ''
 
     def depart_section(self, node):
-        # Remove counter for potential subsections:
+        # Remove counter for potential subsections.
         LaTeXTranslator.depart_section(self, node)
-        if self.section_level == self.frame_level:  # 0
+        if self.section_level == self.frame_level:
             self.out.append(self.end_frametag())
 
     def visit_title(self, node):
@@ -1069,11 +1069,11 @@ class BeamerTranslator(LaTeXTranslator):
         if isinstance(node.parent, nodes.admonition):
             raise nodes.SkipNode
         if node.astext() == 'blankslide':
-            # a blankslide has no title, but is otherwise processed as normal,
+            # A blankslide has no title, but is otherwise processed as normal,
             # meaning that the title is blank, but the slide can have some
             # content. It must at least contain a comment.
             raise nodes.SkipNode
-        elif self.section_level == self.frame_level + 1:  # 1
+        elif self.section_level == self.frame_level + 1:
             self.out.append('\\frametitle{%s}\n\n' %
                             self.encode(node.astext()))
             raise nodes.SkipNode
@@ -1081,11 +1081,11 @@ class BeamerTranslator(LaTeXTranslator):
             LaTeXTranslator.visit_title(self, node)
 
     def depart_title(self, node):
-        if self.section_level != self.frame_level + 1:  # 1
+        if self.section_level != self.frame_level + 1:
             LaTeXTranslator.depart_title(self, node)
 
     def visit_literal_block(self, node):
-        # FIX: the purpose of this method is unclear, but it causes parsed
+        # FIXME: the purpose of this method is unclear, but it causes parsed
         # literals in docutils 0.6 to lose indenting. Thus we've solve the
         # problem be just getting rid of it. [PMA 20091020]
         # TODO: replace leading tabs like in codeblocks?
@@ -1096,7 +1096,7 @@ class BeamerTranslator(LaTeXTranslator):
             LaTeXTranslator.visit_literal_block(self, node)
 
     def depart_literal_block(self, node):
-        # FIX: see `visit_literal_block`
+        # FIXME: see `visit_literal_block`
         if node_has_class(node, 'code-block') and self.cb_use_pygments:
             self.visit_codeblock(node)
         else:
@@ -1104,15 +1104,15 @@ class BeamerTranslator(LaTeXTranslator):
             self.out.append('\\setbeamerfont{quote}{parent=quotation}\n')
 
     def visit_codeblock(self, node):
-        # was langauge argument defined on node?
+        # Was langauge argument defined on node?
         lang = node.get('language', None)
-        # otherwise, was it defined in node classes?
+        # Otherwise, was it defined in node classes?
         if lang is None:
             lang = node_lang_class(node)
-        # otherwise, use commandline argument or default
+        # Otherwise, use commandline argument or default
         if lang is None:
             lang = self.cb_default_lang
-        # replace tabs if required
+        # Replace tabs if required.
         srccode = node.rawsource
         if self.cb_replace_tabs:
             srccode = '\n'.join(
