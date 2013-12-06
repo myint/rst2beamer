@@ -1,7 +1,7 @@
 Simple columns
 --------------
 
-.. r2b-simplecolumns::
+.. beamer-simplecolumns::
     :width: 0.95
 
     .. image:: plot.png
@@ -16,16 +16,16 @@ Simple columns
 Explicit columns
 ----------------
 
-.. r2b-columnset::
+.. beamer-columnset::
     :width: 0.95
 
-    .. r2b-column::
+    .. beamer-column::
         :width: 0.75
 
         .. image:: plot.png
 
 
-    .. r2b-column::
+    .. beamer-column::
 
         * bullet 1
     	* bullet 2

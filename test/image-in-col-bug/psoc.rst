@@ -5,7 +5,7 @@ Introduction to PSoCs
 What is a PSoC?
 ================
 
-.. r2b-simplecolumns::
+.. beamer-simplecolumns::
 	:width: 0.95
 
 	- Micro-controller

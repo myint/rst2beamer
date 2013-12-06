@@ -36,7 +36,7 @@ Testing columns
 Simple columns
 ~~~~~~~~~~~~~~
 
-.. r2b-simplecolumns::
+.. beamer-simplecolumns::
 
 	This is a demonstration of the rst2beamer simple column directive. It
 	should turn every element underneath it into a column, side by side with
@@ -53,7 +53,7 @@ Simple columns
 Simple columns with a set width
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. r2b-simplecolumns::
+.. beamer-simplecolumns::
 	:width: 0.70
 
 	This is a demonstration of the rst2beamer simple column directive with a
@@ -65,7 +65,7 @@ Simple columns with a set width
 Testing containers as columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. container:: r2b-simplecolumns
+.. container:: beamer-simplecolumns
 
 	This uses a container to set out the columns.
 
@@ -75,13 +75,13 @@ Testing containers as columns
 Testing explicit columns
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. r2b-columnset::
+.. beamer-columnset::
 
-	.. r2b-column::
+	.. beamer-column::
 
 		This tests the explicit column directive. No widths are given.
 
-	.. r2b-column::
+	.. beamer-column::
 
 		There should be two columns sharing the default width of 0.90.
 
@@ -91,15 +91,15 @@ Testing explicit columns
 Testing explicit columns with widths
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. r2b-columnset::
+.. beamer-columnset::
 	:width: 0.80
 
-	.. r2b-column::
+	.. beamer-column::
 		:width: 0.50
 
 		The column set has a width of 0.80, and this column 0.50.
 
-	.. r2b-column::
+	.. beamer-column::
 
 		This column should get the remainder, 0.30.
 
@@ -122,7 +122,7 @@ Testing the note directive
 
 There is a note on this page.
 
-.. r2b-note::
+.. beamer-note::
 
 	This is it.
 
@@ -132,19 +132,19 @@ Testing multiple note directives
 
 There are several notes on this page.
 
-.. r2b-note::
+.. beamer-note::
 
 	This is one.
 
 Not that you should notice.
 
-.. r2b-note::
+.. beamer-note::
 
 	This is another.
 
 Unless you use "shownotes".
 
-.. r2b-note::
+.. beamer-note::
 
 	This is a third.
 
@@ -154,13 +154,13 @@ Notes as containers
 
 Notes can also be containers.
 
-.. container:: r2b-note
+.. container:: beamer-note
 
    This is a note.
 
 This helps with compatibility.
 
-.. container:: r2b-note
+.. container:: beamer-note
 
    This is a second.
 

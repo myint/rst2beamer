@@ -19,7 +19,6 @@ See <http:www.agapow.net/software/rst2beamer> for more details.
 # TODO: convert document metadata to front page fields?
 # TODO: toc-conversion?
 # TODO: fix descriptions
-# TODO: 'r2b' or 'beamer' as identifying prefix?
 
 from __future__ import division
 from __future__ import unicode_literals
@@ -565,8 +564,7 @@ class SimpleColsDirective(Directive):
         # Postconditions & return:
         return [cset]
 
-for _name in ['r2b-simplecolumns', 'r2b_simplecolumns']:
-    directives.register_directive(_name, SimpleColsDirective)
+directives.register_directive('beamer-simplecolumns', SimpleColsDirective)
 
 
 class ColumnSetDirective(Directive):
@@ -631,8 +629,7 @@ class ColumnSetDirective(Directive):
         # Postconditions & return:
         return [cset]
 
-for _name in ['r2b-columnset', 'r2b_columnset']:
-    directives.register_directive(_name, ColumnSetDirective)
+directives.register_directive('beamer-columnset', ColumnSetDirective)
 
 
 class ColumnDirective(Directive):
@@ -672,8 +669,7 @@ class ColumnDirective(Directive):
         # Postconditions & return:
         return [col]
 
-for _name in ['r2b-column', 'r2b_column']:
-    directives.register_directive(_name, ColumnDirective)
+directives.register_directive('beamer-column', ColumnDirective)
 
 
 class NoteDirective(Directive):
@@ -698,8 +694,7 @@ class NoteDirective(Directive):
         # Postconditions & return:
         return [note_node]
 
-for _name in ['r2b-note', 'r2b_note']:
-    directives.register_directive(_name, NoteDirective)
+directives.register_directive('beamer-note', NoteDirective)
 
 
 class beamer_section(Directive):
@@ -724,11 +719,10 @@ class beamer_section(Directive):
         title_messages = []
         section_node += messages
         section_node += title_messages
-        section_node.tagname = 'beamer_section'
+        section_node.tagname = 'beamer-section'
         return [section_node]
 
-for _name in ['beamer_section', 'r2b-section', 'r2b_section']:
-    directives.register_directive(_name, beamer_section)
+directives.register_directive('beamer-section', beamer_section)
 
 
 class onlybeamer_directive(Directive):
@@ -1257,19 +1251,19 @@ class BeamerTranslator(LaTeXTranslator):
         # NOTE: theres something weird here where ReST seems to translate
         # underscores in container identifiers into hyphens. So for the
         # moment we'll allow both.
-        if node_has_class(node, 'r2b-simplecolumns'):
+        if node_has_class(node, 'beamer-simplecolumns'):
             self.visit_columnset(node)
             wrap_children_in_columns(node, node.children)
-        elif node_has_class(node, 'r2b-note'):
+        elif node_has_class(node, 'beamer-note'):
             self.visit_beamer_note(node)
         else:
             # currently the LaTeXTranslator does nothing, but just in case
             LaTeXTranslator.visit_container(self, node)
 
     def depart_container(self, node):
-        if node_has_class(node, 'r2b-simplecolumns'):
+        if node_has_class(node, 'beamer-simplecolumns'):
             self.depart_columnset(node)
-        elif node_has_class(node, 'r2b-note'):
+        elif node_has_class(node, 'beamer-note'):
             self.depart_beamer_note(node)
         else:
             # currently the LaTeXTranslator does nothing, but just in case
