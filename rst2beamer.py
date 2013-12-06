@@ -13,8 +13,9 @@ Beamer-flavoured LaTeX.
 See <http:www.agapow.net/software/rst2beamer> for more details.
 
 """
+
 # TODO: modifications for handout sections?
-# TOOD: sections and subsections?
+# TODO: sections and subsections?
 # TODO: convert document metadata to front page fields?
 # TODO: toc-conversion?
 # TODO: fix descriptions
