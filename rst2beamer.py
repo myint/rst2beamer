@@ -652,7 +652,7 @@ class ColumnDirective(Directive):
         # Preconditions:
         self.assert_has_content()
         # get width
-        width = self.options.get('width', None)
+        width = self.options.get('width')
         if width is not None:
             if (width <= 0.0) or (1.0 < width):
                 raise self.error(
@@ -1104,7 +1104,7 @@ class BeamerTranslator(LaTeXTranslator):
 
     def visit_codeblock(self, node):
         # Was langauge argument defined on node?
-        lang = node.get('language', None)
+        lang = node.get('language')
         # Otherwise, was it defined in node classes?
         if lang is None:
             lang = node_lang_class(node)
