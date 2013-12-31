@@ -794,7 +794,7 @@ class BeamerTranslator(LaTeXTranslator):
         LaTeXTranslator.__init__(self, document)
 
         # Used for Beamer title and possibly header/footer. Set from docinfo
-        # record the the settings for codeblocks.
+        # record the settings for codeblocks.
         self.organization = None
         self.cb_use_pygments = document.settings.cb_use_pygments
         self.cb_replace_tabs = document.settings.cb_replace_tabs
