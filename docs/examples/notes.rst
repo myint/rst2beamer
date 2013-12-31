@@ -7,15 +7,15 @@ Usage
 
 The LaTeX source for the corresponding Beamer example without notes can be produced::
 
-	rst2beamer notes.rst notes.tex
+    rst2beamer notes.rst notes.tex
 
 Notes will be included (on the right) via::
 
-	rst2beamer --shownotes true notes.rst notes_shownotes_true.tex
+    rst2beamer --shownotes true notes.rst notes_shownotes_true.tex
 
 A presentation with only the notes can be produced::
 
-		rst2beamer --shownotes only notes.rst notes_shownotes_only.tex
+        rst2beamer --shownotes only notes.rst notes_shownotes_only.tex
 
 
 
@@ -28,17 +28,17 @@ Beamer (and rst2beamer) support the inclusion of notes in a presentation. By def
 
 where ``option`` can be:
 
-	false
-		don't show any notes (the default)
+    false
+        don't show any notes (the default)
 
-	true
-		show notes as per ``right``
+    true
+        show notes as per ``right``
 
-	only
-		show only the notes, not the presentation
+    only
+        show only the notes, not the presentation
 
-	left, right, top, bottom
-		show the notes in the given position to the presentation
+    left, right, top, bottom
+        show the notes in the given position to the presentation
 
 
 The note directive
@@ -48,19 +48,19 @@ Notes can be included with the ``r2b-note`` directive.
 
 .. r2b-note::
 
-	This is an example.
+    This is an example.
 
 Multiple notes can be included in one slide.
 
 .. r2b-note::
 
-	This is an example of that.
+    This is an example of that.
 
 Slides without any notes will produce an empty note slide.
 
 .. r2b-note::
 
-	Look at the previous slide for an example of that.
+    Look at the previous slide for an example of that.
 
 
 Notes as containers
