@@ -4,7 +4,7 @@ The rst2beamer manual
 
 .. warning::
 
-	This manual is disgracefully incomplete.
+    This manual is disgracefully incomplete.
 
 
 Introduction
@@ -90,7 +90,7 @@ Via setuptools / easy_install
 
 From the commandline call::
 
-	% easy_install rst2beamer
+    % easy_install rst2beamer
 
 Superuser privileges may be required.
 
@@ -100,9 +100,9 @@ Via setup.py
 
 Download a source tarball, unpack it and call setup.py to install::
 
-	% tar zxvf rst2beamer.tgz
-	% cd rst2beamer
-	% python setup.py install
+    % tar zxvf rst2beamer.tgz
+    % cd rst2beamer
+    % python setup.py install
 
 Superuser privileges may be required.
 
@@ -119,8 +119,8 @@ Usage
 
 .. note::
 
-	Depending on your platform, the scripts may be installed as ``.py``
-	scripts, or some form of executable, or both.*
+    Depending on your platform, the scripts may be installed as ``.py``
+    scripts, or some form of executable, or both.*
 
 rst2beamer is called::
 
@@ -128,7 +128,7 @@ rst2beamer is called::
 
 For example, the simplest and typical way to use rst2beamer would be::
 
-	rst2beamer infile.txt outfile.tex
+    rst2beamer infile.txt outfile.tex
 
 where ``infile.txt`` contains the ReST and ``outfile.tex`` contains the
 produced Beamer LaTeX.
@@ -137,30 +137,32 @@ It supports the usual docutils and LaTeX writer (rst2latex) options, save the
 ``documentclass`` option (which is fixed to ``beamer``) and hyperref options
 (which are already set in beamer). It also supports:
 
---theme=THEME				Specify Beamer theme.
+--theme=THEME                Specify Beamer theme.
 --overlaybullets=OVERLAYBULLETS
-								Overlay bulleted items. Put [<+-| alert@+>] at the end
-								of \begin{itemize} so that Beamer creats an overlay
-								for each bulleted item and the presentation reveals
-								one bullet at a time
+                                Overlay bulleted items. Put [<+-| alert@+>] at
+                                the end of \begin{itemize} so that Beamer
+                                creates an overlay for each bulleted item and
+                                the presentation reveals one bullet at a time
 --centerfigs=CENTERFIGS
-								Center figures.  All includegraphics statements will
-								be put inside center environments.
+                                Center figures.  All includegraphics statements
+                                will be put inside center environments.
 --documentoptions=DOCUMENTOPTIONS
-								Specify document options. Multiple options can be
-								given, separated by commas.  Default is
-								"10pt,a4paper".
---shownotes=SHOWNOTES	Print embedded notes along with the slides. Possible
-								arguments include 'false' (don't show), 'only' (show
-								only notes), 'left', 'right', 'top', 'bottom' (show in
-								relation to the annotated slide).
+                                Specify document options. Multiple options can
+                                be given, separated by commas.  Default is
+                                "10pt,a4paper".
+--shownotes=SHOWNOTES
+                                Print embedded notes along with the slides.
+                                Possible arguments include 'false' (don't
+                                show), 'only' (show only notes), 'left',
+                                'right', 'top', 'bottom' (show in relation to
+                                the annotated slide).
 
 Of course, rst2beamer only produces the LaTeX source for a presentation. LaTeX
 hackers will have no difficulty using this, but most others will want to
 convert immediately to PDF. This can be done easily with ``pdflatex``. For
 example::
 
-	pdflatex outfile.tex
+    pdflatex outfile.tex
 
 will produce outfile.pdf. pdflatex is included in most TeX distributions.
 
@@ -178,17 +180,17 @@ Beamer can be displayed in a variety of themes, changing the sizing, color and
 layout of page elements. The theme can be controlled by the commandline option
 ``theme``. For example::
 
-	rst2beamer --theme=Rochester infile.rst
+    rst2beamer --theme=Rochester infile.rst
 
 will produce a Beamer file styled with the "Rochester" theme. Some other
 themes include "AnnArbor", "Bergen", "CambridgeUS" and "Warsaw".
 
 .. note::
 
-	The selection of themes available with your LaTeX installation may vary
-	but a typical selection can be seen here [#beamer_themes]_. The default
-	Beamer theme (called "default") is very plain and so rst2beamer uses the
-	"Warsaw" theme as its default.
+    The selection of themes available with your LaTeX installation may vary
+    but a typical selection can be seen here [#beamer_themes]_. The default
+    Beamer theme (called "default") is very plain and so rst2beamer uses the
+    "Warsaw" theme as its default.
 
 
 Sections
@@ -200,17 +202,17 @@ level. A section with no child sections is the lowest. Note that if you are
 going to use subsections anywhere in the document but your first slide isn't
 in a subsection, you have to use dummy a section before your first slide::
 
-	Introduction
-	------------
+    Introduction
+    ------------
 
-	dummy
-	~~~~~
+    dummy
+    ~~~~~
 
-	Slide 1
-	--------
+    Slide 1
+    --------
 
-	- Point 1
-	- Point 2
+    - Point 1
+    - Point 2
 
 The top level title is set as the presentation title while 2nd-level titles
 are set as slide titles (``frametitles`` in Beamer terms). While all other
@@ -235,10 +237,10 @@ Images
 Images default to being centered and having a height of 0.7\textheight (you
 can turn off the centering with a commandline switch). Thus::
 
-	Slide Title
-	-----------
+    Slide Title
+    -----------
 
-	.. image :: image_name.png
+    .. image :: image_name.png
 
 produces a graph centered in the middle of the slide. Simple.
 
@@ -257,18 +259,18 @@ column width will be divided evenly from the total available, which by default
 is set to 0.90 of the page width. The directive accepts an optional argument
 ``width`` that that can be used to set this total. So this::
 
-	.. r2b-simplecolumns::
-		:width: 0.95
+    .. r2b-simplecolumns::
+        :width: 0.95
 
-		This is a demonstration of the rst2beamer simple
-		column directive.
+        This is a demonstration of the rst2beamer simple
+        column directive.
 
-		Notice that we have used the optional argument,
-		"width". It is set to 0.95.
+        Notice that we have used the optional argument,
+        "width". It is set to 0.95.
 
-		* A list or image
-		* can be
-		* a column
+        * A list or image
+        * can be
+        * a column
 
 will produce a slide with three columns, containing the first, then second
 paragraph, then the list. Their individual width will be 0.95 divided by
@@ -280,36 +282,36 @@ formats like HTML, etc. Therefore, we allow containers with certain names to
 act like column sets. Most other writers should recognise these containers and
 at worst ignore them rather than throw an error. For example::
 
-	.. container:: r2b-simplecolumns
+    .. container:: r2b-simplecolumns
 
-		The custom r2b directives won't be recognised by any
-		writer other than rst2beamer.
+        The custom r2b directives won't be recognised by any
+        writer other than rst2beamer.
 
-		So, any container with the name 'r2b-simplecolumns'
-		or 'r2b-simplecolumns' will be handled like the simple
-		columns directive.
+        So, any container with the name 'r2b-simplecolumns'
+        or 'r2b-simplecolumns' will be handled like the simple
+        columns directive.
 
 
 Finally, we allow columns to be explicitly set and their width controlled with
 the r2b-columnset and r2b-column directives. For example::
 
-	.. r2b-columnset::
-		:width: 0.95
+    .. r2b-columnset::
+        :width: 0.95
 
-		.. r2b-column::
-			:width: 0.60
+        .. r2b-column::
+            :width: 0.60
 
-			If you insist on setting columns explicitly, you can,
-			grouping multiple elements.
+            If you insist on setting columns explicitly, you can,
+            grouping multiple elements.
 
-			The width of the column set and individual columns can
-			be given. This set and column are 0.95 and 0.60 wide
-			respectively.
+            The width of the column set and individual columns can
+            be given. This set and column are 0.95 and 0.60 wide
+            respectively.
 
-		.. r2b-column::
+        .. r2b-column::
 
-			Columns not given a width (like this one) share the
-			remainder.
+            Columns not given a width (like this one) share the
+            remainder.
 
 A set of columns is indicated with the directive ``r2b-columnset``. It takes
 the optional argument ``width``, which indicates the total page width the
@@ -337,54 +339,54 @@ slide page.
 rst2beamer supports the inclusion and showing of notes. Their appearance is
 set with the commandline argument ``--shownotes``. For example::
 
-	rst2beamer --shownotes <option> mypresentation.rst
+    rst2beamer --shownotes <option> mypresentation.rst
 
 where ``option`` can be:
 
-	false
-		don't show any notes (the default)
+    false
+        don't show any notes (the default)
 
-	true
-		show notes as per ``right``
+    true
+        show notes as per ``right``
 
-	only
-		show only the notes, not the presentation
+    only
+        show only the notes, not the presentation
 
-	left, right, top, bottom
-		show the notes in the given position to the presentation
+    left, right, top, bottom
+        show the notes in the given position to the presentation
 
 Notes can be included in ReST with the ``r2b-note`` directive. For example::
 
-	.. r2b-note::
+    .. r2b-note::
 
-		This is an example.
+        This is an example.
 
 will inject a note into the current slide. Multiple notes can be included in
 one slide and will be compiled into a single note. For example::
 
-	Farnarkling history
+    Farnarkling history
 
-	.. r2b-note::
+    .. r2b-note::
 
-		Don't forget to mention the Sorenson brothers.
+        Don't forget to mention the Sorenson brothers.
 
-	Greats of the sport
+    Greats of the sport
 
-	.. r2b-note::
+    .. r2b-note::
 
-		They would arkle with great authority.
+        They would arkle with great authority.
 
 will produce a slide with the content:
 
-	Farnarkling history
+    Farnarkling history
 
-	Greats of the sport
+    Greats of the sport
 
 and the accompanying note (normally hidden):
 
-	Don't forget to mention the Sorenson brothers.
+    Don't forget to mention the Sorenson brothers.
 
-	They would arkle with great authority.
+    They would arkle with great authority.
 
 If notes are being shown, and a slide has no notes, the note page will simply
 be empty.
@@ -392,20 +394,20 @@ be empty.
 Again, the custom r2b directives won't be recognised by any writer other than
 rst2beamer, so we allow certain containers to act like notes::
 
-	.. container:: r2b-note
+    .. container:: r2b-note
 
-		Compatibility is important
+        Compatibility is important
 
 Any container with the name 'r2b-note' will be handled like the notes
 directive::
 
-	.. container:: r2b-note
+    .. container:: r2b-note
 
-		This will be understood by other ReST writers.
+        This will be understood by other ReST writers.
 
 .. note::
 
-	See the "notes" input and output example files.
+    See the "notes" input and output example files.
 
 
 Codeblocks
@@ -416,10 +418,10 @@ sourcecode to be included with the literal environment::
 
    ::
 
-	def myfunc (arg1, arg2='foo'):
-		global baz
-		bar = unicode (quux)
-		return 25
+    def myfunc (arg1, arg2='foo'):
+        global baz
+        bar = unicode (quux)
+        return 25
 
 rst2beamer improves on this with ``code-block`` directive. In the simplest use,
 ``code-block`` (or it's synonym, ``sourcecode``) duplicates the literal
@@ -427,14 +429,13 @@ environment::
 
    .. code-block::
 
-   	def myfunc (arg1, arg2='foo'):
-   		global baz
-   		bar = unicode (quux)
-   		return 25
+       def myfunc (arg1, arg2='foo'):
+           global baz
+           bar = unicode (quux)
+           return 25
 
-However, if the Pygments syntax coloring library is installed, and the
-commandline argument ``--codeblocks-use-pygments`` is used, keywords and syntax
-will be highlighted in a language appropriate manner.
+However, if the Pygments syntax coloring library is installed, keywords and
+syntax will be highlighted in a language appropriate manner.
 
 The language is specified by a optional argument to ``code-block``::
 
@@ -449,7 +450,7 @@ deduce its type.
 
 If tabs are used for indenting in a ReST source document, code can appear
 overly spread out (8 spaces per tabs). The ``--codeblocks-replace-tabs``
-commandline option can be used to set the leading tabs in a codeblock ot a
+commandline option can be used to set the leading tabs in a codeblock to a
 different number of spaces.
 
 .. caution::
@@ -478,12 +479,12 @@ Following a double-colon (for preformatting) with a parsed-literal block like
 below won't raise any error, but will result in malformed and incorrectly
 formatted output::
 
-	Do not do this::
+    Do not do this::
 
-	.. parsed-literal::
+    .. parsed-literal::
 
-		*for* i in *xrange* (10):
-			*print* "foo", i
+        *for* i in *xrange* (10):
+            *print* "foo", i
 
 
 Earlier versions of rst2beamer did not work with docutils 0.4, seemingly due
@@ -574,11 +575,11 @@ References
 ----------
 
 .. [#homepage] rst2beamer homepages at `agapow.net
-	<http://www.agapow/net/software/rst2beamer>`__ and `cs.siue.edu
-	<http://home.cs.siue.edu/rkrauss/python_website/>`__
+    <http://www.agapow/net/software/rst2beamer>`__ and `cs.siue.edu
+    <http://home.cs.siue.edu/rkrauss/python_website/>`__
 
 .. [#setuptools] `Installing setuptools
-	<http://peak.telecommunity.com/DevCenter/setuptools#installing-setuptools>`__
+    <http://peak.telecommunity.com/DevCenter/setuptools#installing-setuptools>`__
 
 .. [#docutils] `Docutils homepage <http://docutils.sourceforge.net/>`__
 
@@ -587,4 +588,4 @@ References
 .. [#beamer] `Beamer homepage <http://latex-beamer.sourceforge.net/>`__
 
 .. [#beamer_themes] Patrick Pletscher `Beamer Themes
-	<http://www.pletscher.org/writings/latex/beamerthemes.php>`__
+    <http://www.pletscher.org/writings/latex/beamerthemes.php>`__
