@@ -245,8 +245,8 @@ def adjust_indent_spaces(strn, orig_width=8, new_width=3):
 
     """
     # Preconditions & preparation:
-    assert (1 <= orig_width)
-    assert (0 <= new_width)
+    assert 1 <= orig_width
+    assert 0 <= new_width
     if orig_width == new_width:
         return strn
     # Main:
@@ -277,7 +277,7 @@ def node_has_class(node, classes):
     """
     # Preconditions & preparation:
     # wrap single name in list
-    if not (issubclass(type(classes), list)):
+    if not issubclass(type(classes), list):
         classes = [classes]
     # Main:
     for cname in classes:
@@ -801,7 +801,7 @@ class BeamerTranslator(LaTeXTranslator):
         self.cb_default_lang = document.settings.cb_default_lang
 
         self.head_prefix = [x for x in self.head_prefix
-                            if ('{typearea}' not in x)]
+                            if '{typearea}' not in x]
 
         self.head_prefix.extend([
             '\\definecolor{rrblitbackground}{rgb}{0.55, 0.3, 0.1}\n',
