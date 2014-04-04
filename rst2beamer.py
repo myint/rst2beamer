@@ -942,7 +942,7 @@ class BeamerTranslator(LaTeXTranslator):
                     # cite_key: underscores must not be escaped
                     cite_key = bi[0].replace(r'\_', '_')
                     self.out.append('\\bibitem[%s]{%s}{%s}\n' %
-                                   (bi[0], cite_key, bi[1]))
+                                    (bi[0], cite_key, bi[1]))
                 self.out.append('\\end{thebibliography}\n')
             else:
                 self.out.append('\n\\bibliographystyle{%s}\n' %
