@@ -1001,7 +1001,7 @@ class BeamerTranslator(LaTeXTranslator):
 
     def visit_image(self, node):
         attrs = node.attributes
-        if not 'align' in attrs and self.centerfigs:
+        if 'align' not in attrs and self.centerfigs:
             attrs['align'] = 'center'
         if (
             ('height' not in attrs) and
