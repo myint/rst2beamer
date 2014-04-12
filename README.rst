@@ -2,7 +2,7 @@
 rst2beamer
 ==========
 
-.. image:: https://travis-ci.org/myint/rst2beamer.png?branch=master
+.. image:: https://travis-ci.org/myint/rst2beamer.svg?branch=master
     :target: https://travis-ci.org/myint/rst2beamer
     :alt: Build status
 
