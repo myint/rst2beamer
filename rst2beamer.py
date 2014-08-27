@@ -169,7 +169,7 @@ BEAMER_SPEC = (
 
 BEAMER_DEFAULTS = {
     'use_latex_toc': True,
-    'output_encoding': 'latin-1',
+    'output_encoding': 'utf-8',
     'documentclass': 'beamer',
     'documentoptions': 't',
     # text is at the top of each slide rather than centered. Changing to
