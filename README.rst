@@ -101,6 +101,16 @@ the edges of the slide and disappear. Arguably, this is a sign you should put
 less on each slide.
 
 
+Installing Beamer on MacPorts
+=============================
+
+Install the following packages:
+
+- ``texlive-latex -x11``
+- ``texlive-bin-extra -x11``
+- ``texlive-fonts-recommended -x11``
+
+
 Credits
 =======
 
