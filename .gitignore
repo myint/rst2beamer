@@ -13,3 +13,4 @@ build
 *.snm
 dev
 chaff
+*.vrb
