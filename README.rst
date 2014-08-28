@@ -10,34 +10,41 @@ rst2beamer
 Introduction
 ============
 
-A docutils script converting restructured text into Beamer-flavoured LaTeX.
+A docutils script converting reStructuredText into Beamer-flavoured LaTeX.
 
 Beamer is a LaTeX document class for presentations. rst2beamer [#homepage]_
-provides a Docutils [#docutils]_ writer that transforms restructured text
-[#rst]_ into Beamer-flavoured LaTeX. and provides a commandline script for the
-same. Via this script, ReST can therefore be used to prepare slides and
-presentations.
+provides a docutils [#docutils]_ writer that transforms reStructuredText
+[#rst]_ into Beamer-flavoured LaTeX and provides a command-line script for the
+same. Via this script, reStructuredText can therefore be used to prepare slides
+and presentations.
 
 
 Installation
 ============
 
-::
+Using ``pip``::
 
     $ pip install --upgrade rst2beamer3k
+
+Beamer dependency
+-----------------
+
+On MacPorts::
+
+    $ sudo port install texlive-latex -x11 texlive-fonts-recommended -x11
 
 
 Usage
 =====
 
-rst2beamer should interpret a reasonable subset of restructured text and
-produce reasonable LaTeX. Not all features of beamer have been implemented,
+rst2beamer should interpret a reasonable subset of reStructuredText and
+produce reasonable LaTeX. Not all features of Beamer have been implemented,
 just a (large) subset that allows the quick production of good looking slides.
 These include:
 
-* Overlay lists (i.e. list items that appear point-by-point)
-* Beamer themes
-* Automatic centering and resizing of figures
+* Overlay lists (i.e. list items that appear point-by-point).
+* Beamer themes.
+* Automatic centering and resizing of figures.
 * Embedded notes and the output of note slides.
 * Arranging slide contents into columns.
 
@@ -53,12 +60,12 @@ For example::
 
     $ rst2beamer infile.txt outfile.tex
 
-where ``infile.txt`` contains the ReST and ``outfile.tex`` contains the
+``infile.txt`` contains the reStructuredText and ``outfile.tex`` contains the
 produced Beamer LaTeX.
 
-It supports the usual docutils and LaTeX writer (rst2latex) options, save the
-``documentclass`` option (which is fixed to ``beamer``) and hyperref options
-(which are already set in beamer). It also supports::
+It supports the usual docutils and LaTeX writer (``rst2latex``) options, save
+the ``documentclass`` option (which is fixed to ``beamer``) and ``hyperref``
+options (which are already set in Beamer). It also supports::
 
     --theme=THEME           Specify Beamer theme.
     --overlaybullets=OVERLAYBULLETS
@@ -90,24 +97,15 @@ recommended to update docutils.
 More recently, changes in the LaTeX writer in docutils 0.6 broke rst2beamer
 again. We think all those bugs have been caught.
 
-Not all features of beamer are supported, and some - that deal with with page
+Not all features of Beamer are supported, and some - that deal with with page
 layout or presentation - may never be. Introducing complex syntax to achieve
-complex and specific page effects defeats the point of ReST's simple and
-easy-to-write format. If you need a complex presentation, use Powerpoint or
-Keynote.
+complex and specific page effects defeats the point of reStructuredText's
+simple and easy-to-write format. If you need a complex presentation, use
+PowerPoint or Keynote.
 
 If the content for an individual slide is too large, it will simply overflow
 the edges of the slide and disappear. Arguably, this is a sign you should put
 less on each slide.
-
-
-Installing Beamer on MacPorts
-=============================
-
-Install the following packages:
-
-- ``texlive-latex -x11``
-- ``texlive-fonts-recommended -x11``
 
 
 Credits
@@ -126,7 +124,7 @@ References
     <http://www.agapow/net/software/rst2beamer>`__ and `cs.siue.edu
     <http://home.cs.siue.edu/rkrauss/python_website/>`__
 
-.. [#docutils] `Docutils homepage <http://docutils.sourceforge.net/>`__
+.. [#docutils] `docutils homepage <http://docutils.sourceforge.net/>`__
 
 .. [#rst] `Restructured text <http://docutils.sourceforge.net/rst.html>`__
 
