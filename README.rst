@@ -107,7 +107,6 @@ Installing Beamer on MacPorts
 Install the following packages:
 
 - ``texlive-latex -x11``
-- ``texlive-bin-extra -x11``
 - ``texlive-fonts-recommended -x11``
 
 
