@@ -1,5 +1,7 @@
 #!/bin/bash -ex
 
+trap "echo -e '\x1b[01;31mFailed\x1b[0m'" ERR
+
 if [ "$TRAVIS_PYTHON_VERSION" != "2.7" ]
 then
     python -m doctest rst2beamer.py
