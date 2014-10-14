@@ -12,14 +12,14 @@ Introduction
 
 A docutils script converting reStructuredText into Beamer-flavoured LaTeX.
 
-Beamer [#beamer]_ is a LaTeX document class for presentations. rst2beamer
-provides a docutils [#docutils]_ writer that transforms reStructuredText
-[#rst]_ into Beamer-flavoured LaTeX and provides a command-line script for the
+Beamer is a LaTeX document class for presentations. rst2beamer
+provides a docutils writer that transforms reStructuredText
+into Beamer-flavoured LaTeX and provides a command-line script for the
 same. Via this script, reStructuredText can therefore be used to prepare slides
 and presentations.
 
-This is an unofficial fork (of the original [#original]_) that runs on both
-Python 2 and 3.
+This is an unofficial fork (of https://pypi.python.org/pypi/rst2beamer) that
+runs on both Python 2 and 3.
 
 
 Installation
@@ -118,15 +118,3 @@ rst2beamer is developed by `Ryan Krauss <ryanwkrauss@gmail.com>`__ and
 `Paul-Michael Agapow <agapow@bbsrc.ac.uk>`__. Thanks to those who reported and
 helped us track down bugs: Perttu Laurinen, Mike Pennington, James Haggerty
 and Dale Hathaway.
-
-
-References
-==========
-
-.. [#beamer] `Beamer homepage <https://bitbucket.org/rivanvx/beamer/>`__
-
-.. [#docutils] `docutils homepage <http://docutils.sourceforge.net/>`__
-
-.. [#rst] `Restructured text <http://docutils.sourceforge.net/rst.html>`__
-
-.. [#original] `Old rst2beamer <https://pypi.python.org/pypi/rst2beamer/>`__
