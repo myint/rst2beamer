@@ -439,8 +439,7 @@ def get_lexer(text, lang):
         return get_lexer_by_name(lang)
 
 
-# NODES ###
-# Special nodes for marking up beamer layout
+# Special nodes for marking up beamer layout.
 class columnset(nodes.container):
 
     """A group of columns to display on one slide.
@@ -782,8 +781,6 @@ class block_directive(Directive):
 
 
 directives.register_directive('block', block_directive)
-
-# WRITER
 
 
 class BeamerTranslator(LaTeXTranslator):
