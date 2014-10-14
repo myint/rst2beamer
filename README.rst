@@ -123,10 +123,10 @@ and Dale Hathaway.
 References
 ==========
 
-.. [#original] `Old rst2beamer <https://pypi.python.org/pypi/rst2beamer/>`__
-
 .. [#docutils] `docutils homepage <http://docutils.sourceforge.net/>`__
 
 .. [#rst] `Restructured text <http://docutils.sourceforge.net/rst.html>`__
 
 .. [#beamer] `Beamer homepage <https://bitbucket.org/rivanvx/beamer/>`__
+
+.. [#original] `Old rst2beamer <https://pypi.python.org/pypi/rst2beamer/>`__
