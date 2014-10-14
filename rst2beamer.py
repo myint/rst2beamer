@@ -1018,7 +1018,7 @@ class BeamerTranslator(LaTeXTranslator):
         """Check whether or not a slide should be marked as fragile.
 
         If the slide has class attributes of fragile or notfragile, then
-        the document default is overriden.
+        the document default is overridden.
 
         """
         if 'notfragile' in node.attributes['classes']:
