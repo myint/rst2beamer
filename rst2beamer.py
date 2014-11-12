@@ -335,7 +335,7 @@ def wrap_children_in_columns(par_node, children, width=None):
     # Main:
     # calc width of child columns
     child_cnt = len(children)
-    col_width = width // child_cnt
+    col_width = width / child_cnt
     # set each element of content in a column and add to column set
     new_children = []
     for child in children:
@@ -619,7 +619,7 @@ class ColumnSetDirective(Directive):
             if excess_width <= 0.0:
                 raise self.error(
                     "no room for unsized columns '%f'" % excess_width)
-            col_width = excess_width // len(unsized_cols)
+            col_width = excess_width / len(unsized_cols)
             for child in unsized_cols:
                 child.width = col_width
         elif width < used_width:
