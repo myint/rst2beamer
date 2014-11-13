@@ -81,6 +81,6 @@ Normalise directive names
 20091029 PMA: Most docutils names use hyphens as opposed to underscores (e.g.
 ``code-blocks``). As an added complexity, underscores appear to be translated
 into hyphens by docutils, so we've gotten in a a scrap allowing all sorts of
-names. From this point on, hyphens shall be the "official" style (``r2b-`` as
+names. From this point on, hyphens shall be the "official" style (``beamer-`` as
 opposed to ``r2b_``), although existing underscores shall maintained silently
 for compatibility.
