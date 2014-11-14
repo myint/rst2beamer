@@ -14,7 +14,7 @@ v0.6.6, 2009-11-06
 * Added experimental support for codeblocks, which may be syntax-colored with
   Pygments.
 
-* Normalised all directive names to ``r2b-`` (as opposed to ``r2b_``) in
+* Normalised all directive names to ``beamer-`` (as opposed to ``r2b_``) in
   line with general docutils style, although the old names are still silently
   supported.
 

@@ -253,13 +253,13 @@ layout is important, you may be better off using a more sophisticated
 presentation tool. However, rst2beamer provides a few simple tools for quick
 and consistent page layout into columns.
 
-The simplest method is the r2b-simplecolumns directive. This will turn every
+The simplest method is the beamer-simplecolumns directive. This will turn every
 element underneath it into a column, side by side with each other. Individual
 column width will be divided evenly from the total available, which by default
 is set to 0.90 of the page width. The directive accepts an optional argument
 ``width`` that that can be used to set this total. So this::
 
-    .. r2b-simplecolumns::
+    .. beamer-simplecolumns::
         :width: 0.95
 
         This is a demonstration of the rst2beamer simple
@@ -282,23 +282,23 @@ formats like HTML, etc. Therefore, we allow containers with certain names to
 act like column sets. Most other writers should recognise these containers and
 at worst ignore them rather than throw an error. For example::
 
-    .. container:: r2b-simplecolumns
+    .. container:: beamer-simplecolumns
 
         The custom r2b directives won't be recognised by any
         writer other than rst2beamer.
 
-        So, any container with the name 'r2b-simplecolumns'
-        or 'r2b-simplecolumns' will be handled like the simple
+        So, any container with the name 'beamer-simplecolumns'
+        or 'beamer-simplecolumns' will be handled like the simple
         columns directive.
 
 
 Finally, we allow columns to be explicitly set and their width controlled with
-the r2b-columnset and r2b-column directives. For example::
+the beamer-columnset and beamer-column directives. For example::
 
-    .. r2b-columnset::
+    .. beamer-columnset::
         :width: 0.95
 
-        .. r2b-column::
+        .. beamer-column::
             :width: 0.60
 
             If you insist on setting columns explicitly, you can,
@@ -308,16 +308,16 @@ the r2b-columnset and r2b-column directives. For example::
             be given. This set and column are 0.95 and 0.60 wide
             respectively.
 
-        .. r2b-column::
+        .. beamer-column::
 
             Columns not given a width (like this one) share the
             remainder.
 
-A set of columns is indicated with the directive ``r2b-columnset``. It takes
+A set of columns is indicated with the directive ``beamer-columnset``. It takes
 the optional argument ``width``, which indicates the total page width the
 contained columns will take up. Again, by default it is 0.90.
 
-Only ``r2b-column`` directives can occur directly within a columnset. These
+Only ``beamer-column`` directives can occur directly within a columnset. These
 group one or more text elements to appear within a single column. They can
 take an optional argument ``width``, which indicates how wide that column is.
 Any unsized columns will be given a width from sharing the unallocated width
@@ -355,9 +355,9 @@ where ``option`` can be:
     left, right, top, bottom
         show the notes in the given position to the presentation
 
-Notes can be included in ReST with the ``r2b-note`` directive. For example::
+Notes can be included in ReST with the ``beamer-note`` directive. For example::
 
-    .. r2b-note::
+    .. beamer-note::
 
         This is an example.
 
@@ -366,13 +366,13 @@ one slide and will be compiled into a single note. For example::
 
     Farnarkling history
 
-    .. r2b-note::
+    .. beamer-note::
 
         Don't forget to mention the Sorenson brothers.
 
     Greats of the sport
 
-    .. r2b-note::
+    .. beamer-note::
 
         They would arkle with great authority.
 
@@ -394,14 +394,14 @@ be empty.
 Again, the custom r2b directives won't be recognised by any writer other than
 rst2beamer, so we allow certain containers to act like notes::
 
-    .. container:: r2b-note
+    .. container:: beamer-note
 
         Compatibility is important
 
-Any container with the name 'r2b-note' will be handled like the notes
+Any container with the name 'beamer-note' will be handled like the notes
 directive::
 
-    .. container:: r2b-note
+    .. container:: beamer-note
 
         This will be understood by other ReST writers.
 
