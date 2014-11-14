@@ -20,6 +20,7 @@ See <http:www.agapow.net/software/rst2beamer> for more details.
 # TODO: toc-conversion?
 # TODO: fix descriptions
 
+from __future__ import absolute_import
 from __future__ import division
 from __future__ import unicode_literals
 
@@ -37,7 +38,7 @@ from docutils.writers.latex2e import PreambleCmds
 __docformat__ = 'restructuredtext en'
 __author__ = ('Ryan Krauss <ryanwkrauss@gmail.com> & '
               'Paul-Michael Agapow <agapow@bbsrc.ac.uk>')
-__version__ = '0.8.3'
+__version__ = '0.8.4'
 
 
 SHOWNOTES_FALSE = 'false'
