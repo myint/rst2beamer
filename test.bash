@@ -17,4 +17,12 @@ do
     rm -f .tmp.tex
 done
 
+# Adhoc tests.
+./rst2beamer.py \
+    --language=de \
+    --traceback \
+    --no-codeblocks-use-pygments 'test/warning_test.rst' .tmp.tex
+diff --unified 'test/warning_test_expected.de.tex' .tmp.tex
+rm -f .tmp.tex
+
 echo -e '\x1b[01;32mOkay\x1b[0m'
