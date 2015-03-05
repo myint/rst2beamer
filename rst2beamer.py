@@ -1236,7 +1236,12 @@ class BeamerTranslator(LaTeXTranslator):
         myclass = self._get_admonition_class(node)
         env = self._get_alertblock_type(myclass)
 
-        title = myclass.capitalize()
+        # HACK: Use "splitlines() to get the title only. We need to  use
+        # "astext()" to get the proper language translation. If this happened
+        # in "visit_title()" it would do the right thing without the
+        # "splitlines()".
+        title = self.encode(node.astext()).splitlines()[0]
+
         self.out.append('\\begin{%s}{%s}\n' % (env, title))
 
     def depart_admonition(self, node=None):
