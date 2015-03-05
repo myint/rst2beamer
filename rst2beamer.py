@@ -822,33 +822,7 @@ class BeamerTranslator(LaTeXTranslator):
         if theme:
             self.head_prefix.append('\\usetheme{%s}\n' % theme)
 
-        # set appropriate header options for note display
-        shownotes = document.settings.shownotes
-        if shownotes == SHOWNOTES_TRUE:
-            shownotes = SHOWNOTES_RIGHT
-        use_pgfpages = True
-        if shownotes == SHOWNOTES_FALSE:
-            option_str = 'hide notes'
-            use_pgfpages = False
-        elif shownotes == SHOWNOTES_ONLY:
-            option_str = 'show only notes'
-        else:
-            if shownotes == SHOWNOTES_LEFT:
-                notes_posn = 'left'
-            elif shownotes in SHOWNOTES_RIGHT:
-                notes_posn = 'right'
-            elif shownotes == SHOWNOTES_TOP:
-                notes_posn = 'top'
-            elif shownotes == SHOWNOTES_BOTTOM:
-                notes_posn = 'bottom'
-            else:
-                # TODO: better error handling
-                assert False, "unrecognised option for shownotes '{}'".format(
-                    shownotes)
-            option_str = 'show notes on second screen=%s' % notes_posn
-        if use_pgfpages:
-            self.head_prefix.append('\\usepackage{pgfpages}\n')
-        self.head_prefix.append('\\setbeameroption{%s}\n' % option_str)
+        set_header_options(self.head_prefix, document.settings.shownotes)
 
         if self.cb_use_pygments:
             from pygments.formatters import LatexFormatter
@@ -1269,6 +1243,35 @@ class BeamerTranslator(LaTeXTranslator):
         else:
             # currently the LaTeXTranslator does nothing, but just in case
             LaTeXTranslator.depart_container(self, node)
+
+
+def set_header_options(head_prefix, shownotes):
+    """Set appropriate header options for note display."""
+    if shownotes == SHOWNOTES_TRUE:
+        shownotes = SHOWNOTES_RIGHT
+    use_pgfpages = True
+    if shownotes == SHOWNOTES_FALSE:
+        option_str = 'hide notes'
+        use_pgfpages = False
+    elif shownotes == SHOWNOTES_ONLY:
+        option_str = 'show only notes'
+    else:
+        if shownotes == SHOWNOTES_LEFT:
+            notes_posn = 'left'
+        elif shownotes in SHOWNOTES_RIGHT:
+            notes_posn = 'right'
+        elif shownotes == SHOWNOTES_TOP:
+            notes_posn = 'top'
+        elif shownotes == SHOWNOTES_BOTTOM:
+            notes_posn = 'bottom'
+        else:
+            # TODO: better error handling
+            assert False, "unrecognised option for shownotes '{}'".format(
+                shownotes)
+        option_str = 'show notes on second screen=%s' % notes_posn
+    if use_pgfpages:
+        head_prefix.append('\\usepackage{pgfpages}\n')
+    head_prefix.append('\\setbeameroption{%s}\n' % option_str)
 
 
 class BeamerWriter(Latex2eWriter):
