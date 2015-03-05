@@ -878,6 +878,8 @@ class BeamerTranslator(LaTeXTranslator):
         # this fixes the hardcoded section titles in docutils 0.4
         self.d_class = DocumentClass('article')
 
+        self.admonition_alert_type = None
+
     def depart_document(self, node):
         # Complete header with information gained from walkabout
         # a) conditional requirements (before style sheet)
@@ -1064,6 +1066,9 @@ class BeamerTranslator(LaTeXTranslator):
         if node.astext() == 'dummy':
             raise nodes.SkipNode
         if isinstance(node.parent, nodes.admonition):
+            assert self.admonition_alert_type
+            self.out.append('\\begin{%s}{%s}\n' % (self.admonition_alert_type,
+                                                   self.encode(node.astext())))
             raise nodes.SkipNode
         if node.astext() == 'blankslide':
             # A blankslide has no title, but is otherwise processed as normal,
@@ -1234,20 +1239,13 @@ class BeamerTranslator(LaTeXTranslator):
         if 'error' in node['classes']:
             self.fallbacks['error'] = PreambleCmds.error
         myclass = self._get_admonition_class(node)
-        env = self._get_alertblock_type(myclass)
 
-        # HACK: Use "splitlines() to get the title only. We need to  use
-        # "astext()" to get the proper language translation. If this happened
-        # in "visit_title()" it would do the right thing without the
-        # "splitlines()".
-        title = self.encode(node.astext()).splitlines()[0]
-
-        self.out.append('\\begin{%s}{%s}\n' % (env, title))
+        self.admonition_alert_type = self._get_alertblock_type(myclass)
 
     def depart_admonition(self, node=None):
-        myclass = self._get_admonition_class(node)
-        env = self._get_alertblock_type(myclass)
-        self.out.append('\\end{%s}\n' % env)
+        assert self.admonition_alert_type
+        self.out.append('\\end{%s}\n' % self.admonition_alert_type)
+        self.admonition_alert_type = None
 
     def visit_container(self, node):
         """Handle containers with 'special' names, ignore the rest."""
