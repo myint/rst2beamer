@@ -1190,31 +1190,13 @@ class BeamerTranslator(LaTeXTranslator):
     def depart_block(self, _):
         self.out.append('\\end{block}\n')
 
-    def _get_admonition_class(self, node):
-        # Strip the generic 'admonition' from the list of classes.
-        filt_classes = [cls for cls in node['classes']
-                        if cls != 'admonition']
-        assert len(filt_classes) == 1, 'I need exactly 1 classe: ' + str(
-            filt_classes)
-        # I think docutils lowers anyways, but just to be sure.
-        myclass = filt_classes[0].lower()
-        return myclass
-
-    def _get_alertblock_type(self, myclass):
-        alertlist = ['attention', 'caution', 'danger', 'error', 'warning']
-        if myclass in alertlist:
-            env = 'alertblock'
-        else:
-            env = 'block'
-        return env
-
     def visit_admonition(self, node):
         self.fallbacks['admonition'] = PreambleCmds.admonition
         if 'error' in node['classes']:
             self.fallbacks['error'] = PreambleCmds.error
-        myclass = self._get_admonition_class(node)
+        myclass = get_admonition_class(node)
 
-        self.admonition_alert_type = self._get_alertblock_type(myclass)
+        self.admonition_alert_type = get_alertblock_type(myclass)
 
     def depart_admonition(self, node=None):
         assert self.admonition_alert_type
@@ -1243,6 +1225,26 @@ class BeamerTranslator(LaTeXTranslator):
         else:
             # currently the LaTeXTranslator does nothing, but just in case
             LaTeXTranslator.depart_container(self, node)
+
+
+def get_admonition_class(node):
+    """Return the stripped generic 'admonition' from the list of classes."""
+    filt_classes = [cls for cls in node['classes']
+                    if cls != 'admonition']
+    assert len(filt_classes) == 1, 'I need exactly 1 classe: ' + str(
+        filt_classes)
+    # I think docutils lowers anyways, but just to be sure.
+    myclass = filt_classes[0].lower()
+    return myclass
+
+
+def get_alertblock_type(myclass):
+    alertlist = ['attention', 'caution', 'danger', 'error', 'warning']
+    if myclass in alertlist:
+        env = 'alertblock'
+    else:
+        env = 'block'
+    return env
 
 
 def set_header_options(head_prefix, shownotes):
