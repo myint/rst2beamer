@@ -1231,7 +1231,7 @@ def get_admonition_class(node):
     """Return the stripped generic 'admonition' from the list of classes."""
     filt_classes = [cls for cls in node['classes']
                     if cls != 'admonition']
-    assert len(filt_classes) == 1, 'I need exactly 1 classe: ' + str(
+    assert len(filt_classes) == 1, 'I need exactly 1 class: ' + str(
         filt_classes)
     # I think docutils lowers anyways, but just to be sure.
     myclass = filt_classes[0].lower()
