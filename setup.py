@@ -44,7 +44,7 @@ setup(
     py_modules=['rst2beamer'],
     zip_safe=False,
     install_requires=[
-        'docutils',
+        'docutils >= 0.11',
     ],
     entry_points={
         'console_scripts': [
