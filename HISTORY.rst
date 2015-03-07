@@ -2,6 +2,30 @@ History
 =======
 
 
+v0.8.5, 2015-03-07
+------------------
+
+* Respect ``--language`` in the context of admonition directives.
+
+
+v0.8.4, 2014-11-14
+------------------
+
+* Fix width calculation in columns.
+
+
+v0.8.3, 2014-08-26
+------------------
+
+* Improve scaling.
+
+
+v0.8.2, 2013-12-01
+------------------
+
+* Enable syntax highlighting by default.
+
+
 v0.8, 2013-06-04
 ----------------
 

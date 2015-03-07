@@ -3,7 +3,6 @@
 """Installer for rst2beamer."""
 
 import ast
-import os
 
 from setuptools import setup
 
@@ -16,7 +15,7 @@ def version():
                 return ast.parse(line).body[0].value.s
 
 with open('README.rst') as readme:
-    with open(os.path.join('docs', 'HISTORY.rst')) as history:
+    with open('HISTORY.rst') as history:
         DESCRIPTION = readme.read() + '\n' + history.read()
 
 

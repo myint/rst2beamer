@@ -6,7 +6,7 @@ exclude docs/TODO.rst
 exclude feature_requests
 exclude feature_requests/*
 exclude test
-include docs/HISTORY.rst
+include HISTORY.rst
 include docs/MANUAL.*
 include rst2beamer.py
 recursive-exclude test *
