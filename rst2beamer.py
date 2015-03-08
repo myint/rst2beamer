@@ -32,6 +32,7 @@ from docutils.writers.latex2e import LaTeXTranslator, DocumentClass
 from docutils import nodes
 from docutils.nodes import fully_normalize_name as normalize_name
 from docutils.parsers.rst import directives, Directive
+from docutils import utils
 from docutils.writers.latex2e import PreambleCmds
 
 
@@ -1282,9 +1283,11 @@ def main():
     description = (
         'Generates Beamer-flavoured LaTeX for PDF-based presentations. ' +
         default_description)
-    publish_cmdline(writer=BeamerWriter(),
-                    description=description,
-                    settings_overrides={'halt_level': 3})
+
+    publish_cmdline(
+        writer=BeamerWriter(),
+        description=description,
+        settings_overrides={'halt_level': utils.Reporter.ERROR_LEVEL})
 
 
 if __name__ == '__main__':
