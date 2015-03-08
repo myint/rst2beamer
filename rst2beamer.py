@@ -403,8 +403,9 @@ def highlight_code(text, lang):
     # Preconditions & preparation:
     from pygments import highlight
     from pygments.formatters import LatexFormatter
-    # Main:
     lexer = get_lexer(text, lang)
+    if not lexer:
+        return text
     lexer.add_filter('whitespace', tabsize=3, tabs=' ')
     return highlight(text, lexer, LatexFormatter(tabsize=3))
 
