@@ -750,6 +750,8 @@ class onlybeamer_directive(Directive):
         # survey widths
         return [only_beamer_set]
 
+directives.register_directive('onlybeamer', onlybeamer_directive)
+
 
 class block_directive(Directive):
 
@@ -779,7 +781,6 @@ class block_directive(Directive):
         # survey widths
         body_set.title = title
         return [body_set]
-
 
 directives.register_directive('block', block_directive)
 
