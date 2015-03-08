@@ -1294,7 +1294,9 @@ def main():
     description = (
         'Generates Beamer-flavoured LaTeX for PDF-based presentations. ' +
         default_description)
-    publish_cmdline(writer=BeamerWriter(), description=description)
+    publish_cmdline(writer=BeamerWriter(),
+                    description=description,
+                    settings_overrides={'halt_level': 3})
 
 
 if __name__ == '__main__':
