@@ -697,7 +697,7 @@ class NoteDirective(Directive):
 directives.register_directive('beamer-note', NoteDirective)
 
 
-class beamer_section(Directive):
+class BeamerSection(Directive):
 
     required_arguments = 1
     optional_arguments = 0
@@ -722,10 +722,10 @@ class beamer_section(Directive):
         section_node.tagname = 'beamer-section'
         return [section_node]
 
-directives.register_directive('beamer-section', beamer_section)
+directives.register_directive('beamer-section', BeamerSection)
 
 
-class onlybeamer_directive(Directive):
+class OnlyBeamerDirective(Directive):
 
     r"""A directive that encloses its content in \only<beamer>{content} so that
     the content shows up in the presentation and not in the handouts or article
@@ -750,10 +750,10 @@ class onlybeamer_directive(Directive):
         # survey widths
         return [only_beamer_set]
 
-directives.register_directive('onlybeamer', onlybeamer_directive)
+directives.register_directive('onlybeamer', OnlyBeamerDirective)
 
 
-class block_directive(Directive):
+class BlockDirective(Directive):
 
     r"""A directive that encloses its content in.
 
@@ -782,7 +782,7 @@ class block_directive(Directive):
         body_set.title = title
         return [body_set]
 
-directives.register_directive('block', block_directive)
+directives.register_directive('block', BlockDirective)
 
 
 class BeamerTranslator(LaTeXTranslator):
