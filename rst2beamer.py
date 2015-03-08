@@ -193,7 +193,7 @@ PreambleCmds.documenttitle = r"""
 \maketitle
 """
 
-docinfo_w_institute = r"""
+DOCINFO_W_INSTITUTE = r"""
 %% Document title
 \title[%s]{%s}
 \author[%s]{%s}
@@ -433,7 +433,7 @@ def get_lexer(text, lang):
     if lang == 'guess':
         try:
             return guess_lexer(text)
-        except Exception:
+        except ValueError:
             return None
     elif lang == 'none':
         return TextLexer
@@ -459,7 +459,8 @@ class column(nodes.container):
     Named as per docutils standards.
 
     """
-    # TODO: should really init width in a c'tor
+
+    width = 0
 
 
 class beamer_note(nodes.container):
@@ -480,7 +481,8 @@ class onlybeamer(nodes.container):
     Named as per docutils standards.
 
     """
-    # NOTE: a simple container, has no attributes.
+
+    handouttext = ''
 
 
 class block(nodes.container):
@@ -490,7 +492,8 @@ class block(nodes.container):
     Named as per docutils standards.
 
     """
-    # NOTE: a simple container, has no attributes.
+
+    title = ''
 
 
 # DIRECTIVES
@@ -902,23 +905,23 @@ class BeamerTranslator(LaTeXTranslator):
                 docinfo_str = PreambleCmds.documenttitle % tuple(docinfo_list)
             else:
                 docinfo_list.append(self.organization)
-                docinfo_str = docinfo_w_institute % tuple(docinfo_list)
+                docinfo_str = DOCINFO_W_INSTITUTE % tuple(docinfo_list)
             self.body_pre_docinfo.append(docinfo_str)
         # b) bibliography
         # TODO insertion point of bibliography should be configurable.
         if self._use_latex_citations and len(self._bibitems) > 0:
             if not self.bibtex:
                 widest_label = ''
-                for bi in self._bibitems:
-                    if len(widest_label) < len(bi[0]):
-                        widest_label = bi[0]
+                for bib_item in self._bibitems:
+                    if len(widest_label) < len(bib_item[0]):
+                        widest_label = bib_item[0]
                 self.out.append('\n\\begin{thebibliography}{%s}\n' %
                                 widest_label)
-                for bi in self._bibitems:
+                for bib_item in self._bibitems:
                     # cite_key: underscores must not be escaped
-                    cite_key = bi[0].replace(r'\_', '_')
+                    cite_key = bib_item[0].replace(r'\_', '_')
                     self.out.append('\\bibitem[%s]{%s}{%s}\n' %
-                                    (bi[0], cite_key, bi[1]))
+                                    (bib_item[0], cite_key, bib_item[1]))
                 self.out.append('\\end{thebibliography}\n')
             else:
                 self.out.append('\n\\bibliographystyle{%s}\n' %
@@ -961,20 +964,6 @@ class BeamerTranslator(LaTeXTranslator):
         else:
             self.context.append(' \\\\\n')
 
-    def latex_image_length(self, width_str):
-        match = re.match(r'(\d*\.?\d*)\s*(\S*)', width_str)
-        if not match:
-            # fallback
-            return width_str
-        res = width_str
-        amount, unit = match.groups()[:2]
-        if unit == 'px':
-            # LaTeX does not know pixels but points
-            res = '%spt' % amount
-        elif unit == '%':
-            res = '%.3f\\linewidth' % (float(amount) / 100.0)
-        return res
-
     def visit_image(self, node):
         attrs = node.attributes
         if 'align' not in attrs and self.centerfigs:
@@ -1011,9 +1000,6 @@ class BeamerTranslator(LaTeXTranslator):
         bf_str += '\n'
         return bf_str
 
-    def end_frametag(self):
-        return '\n\\end{frame}\n'
-
     def visit_section(self, node):
         if node.astext() == 'blankslide':
             # this never gets reached, but I don't know if that is bad
@@ -1027,16 +1013,11 @@ class BeamerTranslator(LaTeXTranslator):
                 self.out.append(self.begin_frametag(node))
             LaTeXTranslator.visit_section(self, node)
 
-    def bookmark(self, _):
-        """I think beamer already handles bookmarks well, so I don't want
-        duplicates."""
-        return ''
-
     def depart_section(self, node):
         # Remove counter for potential subsections.
         LaTeXTranslator.depart_section(self, node)
         if self.section_level == self.frame_level:
-            self.out.append(self.end_frametag())
+            self.out.append(end_frametag())
 
     def visit_title(self, node):
         if node.astext() == 'dummy':
@@ -1227,6 +1208,13 @@ class BeamerTranslator(LaTeXTranslator):
         else:
             # currently the LaTeXTranslator does nothing, but just in case
             LaTeXTranslator.depart_container(self, node)
+
+    def unimplemented_visit(self, node):
+        assert False
+
+
+def end_frametag():
+    return '\n\\end{frame}\n'
 
 
 def get_admonition_class(node):
