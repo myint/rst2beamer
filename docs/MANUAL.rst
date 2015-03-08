@@ -253,11 +253,11 @@ layout is important, you may be better off using a more sophisticated
 presentation tool. However, rst2beamer provides a few simple tools for quick
 and consistent page layout into columns.
 
-The simplest method is the beamer-simplecolumns directive. This will turn every
-element underneath it into a column, side by side with each other. Individual
-column width will be divided evenly from the total available, which by default
-is set to 0.90 of the page width. The directive accepts an optional argument
-``width`` that that can be used to set this total. So this::
+The simplest method is the ``beamer-simplecolumns`` directive. This will turn
+every element underneath it into a column, side by side with each other.
+Individual column width will be divided evenly from the total available, which
+by default is set to 0.90 of the page width. The directive accepts an optional
+argument ``width`` that that can be used to set this total. So this::
 
     .. beamer-simplecolumns::
         :width: 0.95
@@ -276,15 +276,15 @@ will produce a slide with three columns, containing the first, then second
 paragraph, then the list. Their individual width will be 0.95 divided by
 three.
 
-However, custom r2b directives won't be recognised by any writer other than
-rst2beamer. It would be lose the ability to turn your presentation into other
-formats like HTML, etc. Therefore, we allow containers with certain names to
-act like column sets. Most other writers should recognise these containers and
-at worst ignore them rather than throw an error. For example::
+However, custom ``beamer`` directives won't be recognised by any writer other
+than rst2beamer. It would be lose the ability to turn your presentation into
+other formats like HTML, etc. Therefore, we allow containers with certain names
+to act like column sets. Most other writers should recognise these containers
+and at worst ignore them rather than throw an error. For example::
 
     .. container:: beamer-simplecolumns
 
-        The custom r2b directives won't be recognised by any
+        The custom "beamer" directives won't be recognised by any
         writer other than rst2beamer.
 
         So, any container with the name 'beamer-simplecolumns'
@@ -293,7 +293,7 @@ at worst ignore them rather than throw an error. For example::
 
 
 Finally, we allow columns to be explicitly set and their width controlled with
-the beamer-columnset and beamer-column directives. For example::
+the ``beamer-columnset`` and ``beamer-column`` directives. For example::
 
     .. beamer-columnset::
         :width: 0.95
@@ -391,14 +391,14 @@ and the accompanying note (normally hidden):
 If notes are being shown, and a slide has no notes, the note page will simply
 be empty.
 
-Again, the custom r2b directives won't be recognised by any writer other than
-rst2beamer, so we allow certain containers to act like notes::
+Again, the custom ``beamer`` directives won't be recognised by any writer other
+than rst2beamer, so we allow certain containers to act like notes::
 
     .. container:: beamer-note
 
         Compatibility is important
 
-Any container with the name 'beamer-note' will be handled like the notes
+Any container with the name ``beamer-note`` will be handled like the notes
 directive::
 
     .. container:: beamer-note
