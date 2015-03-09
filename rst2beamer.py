@@ -980,27 +980,6 @@ class BeamerTranslator(LaTeXTranslator):
     def depart_Text(self, node):
         pass
 
-    def node_fragile_check(self, node):
-        """Check whether or not a slide should be marked as fragile.
-
-        If the slide has class attributes of fragile or notfragile, then
-        the document default is overridden.
-
-        """
-        if 'notfragile' in node.attributes['classes']:
-            return False
-        elif 'fragile' in node.attributes['classes']:
-            return True
-        else:
-            return self.fragile_default
-
-    def begin_frametag(self, node):
-        bf_str = '\n\\begin{frame}'
-        if self.node_fragile_check(node):
-            bf_str += '[fragile]'
-        bf_str += '\n'
-        return bf_str
-
     def visit_section(self, node):
         if node.astext() == 'blankslide':
             # this never gets reached, but I don't know if that is bad
@@ -1011,7 +990,7 @@ class BeamerTranslator(LaTeXTranslator):
                 if temp > self.frame_level:
                     self.frame_level = temp
             else:
-                self.out.append(self.begin_frametag(node))
+                self.out.append(begin_frametag(node, self.fragile_default))
             LaTeXTranslator.visit_section(self, node)
 
     def depart_section(self, node):
@@ -1212,6 +1191,29 @@ class BeamerTranslator(LaTeXTranslator):
 
     def unimplemented_visit(self, node):
         assert False
+
+
+def node_fragile_check(node, fragile_default):
+    """Check whether or not a slide should be marked as fragile.
+
+    If the slide has class attributes of fragile or notfragile, then
+    the document default is overridden.
+
+    """
+    if 'notfragile' in node.attributes['classes']:
+        return False
+    elif 'fragile' in node.attributes['classes']:
+        return True
+    else:
+        return fragile_default
+
+
+def begin_frametag(node, fragile_default):
+    bf_str = '\n\\begin{frame}'
+    if node_fragile_check(node, fragile_default):
+        bf_str += '[fragile]'
+    bf_str += '\n'
+    return bf_str
 
 
 def end_frametag():
