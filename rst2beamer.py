@@ -1223,7 +1223,7 @@ def end_frametag():
 def get_admonition_class(node):
     """Return the stripped generic 'admonition' from the list of classes."""
     filt_classes = [cls for cls in node['classes'] if cls != 'admonition']
-    assert len(filt_classes) == 1, 'expect one class: {}'.format(filt_classes)
+    assert len(filt_classes) == 1
     # I think docutils lowers anyways, but just to be sure.
     myclass = filt_classes[0].lower()
     return myclass
