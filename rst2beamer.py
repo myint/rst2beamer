@@ -74,7 +74,7 @@ BEAMER_SPEC = (
             (
                 'Specify theme.',
                 ['--theme'],
-                {'default': 'Warsaw', }
+                {'default': 'Ilmenau', }
             ),
             (
                 'Overlay bulleted items. Put [<+-| alert@+>] at the end of '
@@ -82,7 +82,7 @@ BEAMER_SPEC = (
                 'bulleted item and the presentation reveals one bullet at a '
                 'time',
                 ['--overlaybullets'],
-                {'default': True, }
+                {'default': False, }
             ),
             (
                 'Default for whether or not to pass the fragile option to '
