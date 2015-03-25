@@ -2,6 +2,13 @@ History
 =======
 
 
+v0.8.6a, ???
+------------
+
+* Use better defaults. The default theme is now ``Ilmenau`` and the
+  ``--overlaybullets`` is now disabled by default.
+
+
 v0.8.5, 2015-03-07
 ------------------
 
