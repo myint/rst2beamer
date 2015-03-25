@@ -36,8 +36,6 @@ setup(
         'Topic :: Multimedia :: Graphics :: Presentation',
     ],
     keywords='presentation docutils rst restructured-text',
-    author='Ryan Krauss & Paul-Michael Agapow',
-    author_email='ryanwkrauss@gmail.com, agapow@bbsrc.ac.uk',
     url='https://github.com/myint/rst2beamer',
     license='GPL',
     py_modules=['rst2beamer'],
