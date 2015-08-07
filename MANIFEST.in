@@ -1,5 +1,6 @@
 exclude *.bash
 exclude .travis.yml
+exclude .gitattributes
 exclude Makefile
 exclude docs/DEVNOTES.rst
 exclude docs/TODO.rst
