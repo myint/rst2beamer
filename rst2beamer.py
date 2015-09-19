@@ -22,7 +22,7 @@
 Beamer is a LaTeX document class for presentations. Via this script, ReST can
 be used to prepare slides. It can be called::
 
-        rst2beamer.py infile.txt > outfile.tex
+    rst2beamer.py infile.txt > outfile.tex
 
 where ``infile.txt`` contains the rst and ``outfile.tex`` contains the
 Beamer-flavoured LaTeX.
