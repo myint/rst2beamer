@@ -960,7 +960,7 @@ class BeamerTranslator(LaTeXTranslator):
                 if name == 'author' or not self.author_stack:
                     self.author_stack.append([])
                 if name == 'address':   # newlines are meaningful
-                    self.insert_newline = 1
+                    self.insert_newline = True
                     text = self.encode(node.astext())
                     self.insert_newline = False
                 else:
@@ -976,7 +976,7 @@ class BeamerTranslator(LaTeXTranslator):
 
         self.out.append('\\textbf{%s}: &\n\t' % self.language_label(name))
         if name == 'address':
-            self.insert_newline = 1
+            self.insert_newline = True
             self.out.append('{\\raggedright\n')
             self.context.append(' } \\\\\n')
         else:
