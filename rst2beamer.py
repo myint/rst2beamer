@@ -264,8 +264,8 @@ def adjust_indent_spaces(strn, orig_width=8, new_width=3):
 
     """
     # Preconditions & preparation:
-    assert 1 <= orig_width
-    assert 0 <= new_width
+    assert orig_width >= 1
+    assert new_width >= 0
     if orig_width == new_width:
         return strn
     # Main:
@@ -569,7 +569,7 @@ class SimpleColsDirective(Directive):
         self.assert_has_content()
         # get width
         width = self.options.get('width', 0.9)
-        if (width <= 0.0) or (1.0 < width):
+        if (width <= 0.) or (width > 1.):
             raise self.error(
                 "columnset width '%f' must be between 0.0 and 1.0" %
                 width)
@@ -614,7 +614,7 @@ class ColumnSetDirective(Directive):
         self.assert_has_content()
         # get and check width of column set
         width = self.options.get('width', 0.9)
-        if (width <= 0.0) or (1.0 < width):
+        if (width <= 0.) or (width > 1.):
             raise self.error(
                 "columnset width '%f' must be between 0.0 and 1.0" % width)
         # Main:
@@ -633,13 +633,13 @@ class ColumnSetDirective(Directive):
             else:
                 unsized_cols.append(child)
 
-        if 1.0 < used_width:
+        if used_width > 1.:
             raise self.error(
                 "cumulative column width '%f' exceeds 1.0" % used_width)
         # set unsized widths
         if unsized_cols:
             excess_width = width - used_width
-            if excess_width <= 0.0:
+            if excess_width <= 0.:
                 raise self.error(
                     "no room for unsized columns '%f'" % excess_width)
             col_width = excess_width / len(unsized_cols)
@@ -676,7 +676,7 @@ class ColumnDirective(Directive):
         # get width
         width = self.options.get('width')
         if width is not None:
-            if (width <= 0.0) or (1.0 < width):
+            if (width <= 0.) or (width > 1.):
                 raise self.error(
                     "columnset width '%f' must be between 0.0 and 1.0" %
                     width)
