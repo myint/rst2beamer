@@ -908,7 +908,7 @@ class BeamerTranslator(LaTeXTranslator):
             if self.shortauthor:
                 shortauthor = self.shortauthor
             else:
-                shortauthor = ''.join(self.pdfauthor)
+                shortauthor = ', '.join(self.pdfauthor)
 
             if self.subtitle:
                 title += [r'\\ % subtitle',
