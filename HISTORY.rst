@@ -2,6 +2,12 @@ History
 =======
 
 
+v0.9.1, 2016-01-11
+------------------
+
+* Separate names in author list with commas for use in ``shortauthor``.
+
+
 v0.9, 2015-03-27
 ----------------
 
