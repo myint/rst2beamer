@@ -56,7 +56,7 @@ from docutils.writers.latex2e import PreambleCmds
 __docformat__ = 'restructuredtext en'
 __author__ = ('Ryan Krauss <ryanwkrauss@gmail.com> & '
               'Paul-Michael Agapow <agapow@bbsrc.ac.uk>')
-__version__ = '0.9'
+__version__ = '0.9.1'
 
 
 SHOWNOTES_FALSE = 'false'
