@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 # Copyright (C) 2007-2009 Ryan Krauss, Paul-Michael Agapow
-# Copyright (C) 2013-2015 Steven Myint
+# Copyright (C) 2013-2016 Steven Myint
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
