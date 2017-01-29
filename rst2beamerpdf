@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# TODO: Do this in Python.
+
+set -eu
+
+readonly temp=$(mktemp -d)
+
+readonly tex_filename="$temp/temp.tex"
+readonly pdf_filename="$temp/temp.pdf"
+rst2beamer "$1" "$tex_filename"
+pdflatex -output-directory="$temp" "$tex_filename"
+
+mv "$pdf_filename" "$2"
+
+rm -r "$temp"
