@@ -38,6 +38,7 @@
 % hyperlinks:
 \ifthenelse{\isundefined{\hypersetup}}{
   \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+  \usepackage{bookmark}
   \urlstyle{same} % normal text font (alternatives: tt, rm, sf)
 }{}
 
@@ -51,7 +52,7 @@
 
 Here is a plot using default settings:
 
-\noindent\makebox[\textwidth][c]{\includegraphics[height=0.75\textheight]{plot.png}}
+\noindent\makebox[\linewidth][c]{\includegraphics[height=0.75\textheight]{plot.png}}
 
 \end{frame}
 
@@ -61,7 +62,7 @@ Here is a plot using default settings:
 
 Here is a centered plot:
 
-\noindent\makebox[\textwidth][c]{\includegraphics[height=0.75\textheight]{plot.png}}
+\noindent\makebox[\linewidth][c]{\includegraphics[height=0.75\textheight]{plot.png}}
 
 \end{frame}
 
@@ -89,7 +90,7 @@ Here is a right-aligned plot:
 \frametitle{Slide 5}
 
 
-\noindent\makebox[\textwidth][c]{\includegraphics[height=0.75\textheight]{plot.png}}
+\noindent\makebox[\linewidth][c]{\includegraphics[height=0.75\textheight]{plot.png}}
 
 \end{frame}
 

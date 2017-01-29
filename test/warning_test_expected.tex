@@ -41,7 +41,7 @@
     \csname DUadmonition#1\endcsname{#2}%
   \else
     \begin{center}
-      \fbox{\parbox{0.9\textwidth}{#2}}
+      \fbox{\parbox{0.9\linewidth}{#2}}
     \end{center}
   \fi
 }
@@ -49,6 +49,7 @@
 % hyperlinks:
 \ifthenelse{\isundefined{\hypersetup}}{
   \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+  \usepackage{bookmark}
   \urlstyle{same} % normal text font (alternatives: tt, rm, sf)
 }{}
 

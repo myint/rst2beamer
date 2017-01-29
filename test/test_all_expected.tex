@@ -23,6 +23,7 @@
 \usepackage{ifthen}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{alltt}
 \setcounter{secnumdepth}{0}
 
 %%% Custom LaTeX preamble
@@ -38,6 +39,7 @@
 % hyperlinks:
 \ifthenelse{\isundefined{\hypersetup}}{
   \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+  \usepackage{bookmark}
   \urlstyle{same} % normal text font (alternatives: tt, rm, sf)
 }{}
 \hypersetup{
@@ -68,9 +70,10 @@ The document is intended to test most features of rst2beamer in one go, such
 any new versions can be quickly verified by calling:
 \setbeamerfont{quote}{parent={}}
 %
-\begin{quote}{\ttfamily \raggedright \noindent
-rst2beamer~test\_all.rst~test\_all.tex
-}
+\begin{quote}
+\begin{alltt}
+rst2beamer test_all.rst test_all.tex
+\end{alltt}
 \end{quote}
 \setbeamerfont{quote}{parent=quotation}
 
@@ -210,9 +213,10 @@ The notes on the follwing pages wil only show up if rst2beamer is run with
 the \texttt{shownotes} option. For example:
 \setbeamerfont{quote}{parent={}}
 %
-\begin{quote}{\ttfamily \raggedright \noindent
-rst2beamer~-{}-shownotes~true~test\_all.rst~test\_all.tex
-}
+\begin{quote}
+\begin{alltt}
+rst2beamer -{}-shownotes true test_all.rst test_all.tex
+\end{alltt}
 \end{quote}
 \setbeamerfont{quote}{parent=quotation}
 
@@ -285,9 +289,10 @@ Normally the below list should appear as an overlay (i.e. point-by-point). It
 will appear as a single unit if instead you call:
 \setbeamerfont{quote}{parent={}}
 %
-\begin{quote}{\ttfamily \raggedright \noindent
-rst2beamer~-{}-overlaybullets~false~test\_all.rst~test\_all.tex
-}
+\begin{quote}
+\begin{alltt}
+rst2beamer -{}-overlaybullets false test_all.rst test_all.tex
+\end{alltt}
 \end{quote}
 \setbeamerfont{quote}{parent=quotation}
 \begin{itemize}[<+-| alert@+>]
@@ -306,10 +311,11 @@ rst2beamer~-{}-overlaybullets~false~test\_all.rst~test\_all.tex
 The below should appear as indented Python code with a monospace font:
 \setbeamerfont{quote}{parent={}}
 %
-\begin{quote}{\ttfamily \raggedright \noindent
-for~i~in~xrange~(10):\\
-~~~~~~~~print~\textquotedbl{}foo\textquotedbl{},~i
-}
+\begin{quote}
+\begin{alltt}
+for i in xrange (10):
+        print "foo", i
+\end{alltt}
 \end{quote}
 \setbeamerfont{quote}{parent=quotation}
 
@@ -323,7 +329,8 @@ The below should appear as indented Python code with a monospace font, and
 some keywords in italics:
 \setbeamerfont{quote}{parent={}}
 %
-\begin{quote}{\ttfamily \raggedright \noindent
+\begin{quote}
+{\ttfamily \raggedright \noindent
 \emph{for}~i~in~\emph{xrange}~(10):\\
 ~~~~~~~~\emph{print}~\textquotedbl{}foo\textquotedbl{},~i
 }
@@ -339,12 +346,13 @@ some keywords in italics:
 The below should appear as a simple literal blocks, or highlighted if you use pygments:
 \setbeamerfont{quote}{parent={}}
 %
-\begin{quote}{\ttfamily \raggedright \noindent
-def~myfunc~(arg1,~arg2='foo'):\\
-~~~~~~~~global~baz\\
-~~~~~~~~bar~=~unicode~(quux)\\
-~~~~~~~~return~25
-}
+\begin{quote}
+\begin{alltt}
+def myfunc (arg1, arg2='foo'):
+        global baz
+        bar = unicode (quux)
+        return 25
+\end{alltt}
 \end{quote}
 \setbeamerfont{quote}{parent=quotation}
 
