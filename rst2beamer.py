@@ -927,7 +927,7 @@ class BeamerTranslator(LaTeXTranslator):
             self.body_pre_docinfo.append(docinfo_str)
         # b) bibliography
         # TODO insertion point of bibliography should be configurable.
-        if self._use_latex_citations and len(self._bibitems) > 0:
+        if self._use_latex_citations and self._bibitems:
             if not self.bibtex:
                 widest_label = ''
                 for bib_item in self._bibitems:

@@ -8,6 +8,7 @@ check:
 		--disable=fixme \
 		--disable=invalid-name \
 		--disable=missing-docstring \
+		--disable=no-else-return \
 		--disable=no-name-in-module \
 		--disable=star-args \
 		--disable=too-few-public-methods \
