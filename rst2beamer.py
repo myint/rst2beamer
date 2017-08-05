@@ -538,7 +538,7 @@ class CodeBlockDirective(Directive):
         try:
             language = self.arguments[0]
         except IndexError:
-            language = 'guess'
+            language = None
         code = '\n'.join(self.content)
         literal = nodes.literal_block(code, code)
         literal['classes'].append('code-block')
